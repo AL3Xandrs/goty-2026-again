@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3d71mencc6ry"]
+
+[ext_resource type="Texture2D" uid="uid://bo0dnr828bngb" path="res://assets/2inima_template_card.png" id="1_nmbkq"]
+
+[node name="cardScene" type="Node2D"]
+
+[node name="2InimaTemplateCard" type="Sprite2D" parent="."]
+position = Vector2(0, -3.05176e-05)
+scale = Vector2(1.22, 1.22)
+texture = ExtResource("1_nmbkq")

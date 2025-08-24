@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://deggv6qton63a"]
+[gd_scene load_steps=2 format=3 uid="uid://deggv6qton63a"]
+
+[ext_resource type="Texture2D" uid="uid://bcjq5vosn8pdw" path="res://assets/basic_template.png" id="1_ig7tw"]
 
 [node name="game" type="Node2D"]
+
+[node name="BasicTemplate" type="Sprite2D" parent="."]
+position = Vector2(578, 328)
+texture = ExtResource("1_ig7tw")

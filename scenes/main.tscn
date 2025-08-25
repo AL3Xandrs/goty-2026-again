@@ -11,6 +11,7 @@ radius = 69.0
 height = 138.0
 
 [node name="game" type="Node2D"]
+position = Vector2(-3, -2)
 
 [node name="BasicTemplate" type="Sprite2D" parent="."]
 texture = ExtResource("1_0wfyh")

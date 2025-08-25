@@ -2,15 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-path="res://.godot/imported/tileset_yellow.png-862253719fdcfe1c0a229d271ec69a54.ctex"
+uid="uid://lmg7oplrwxie"
+path="res://.godot/imported/HitButton.png-20008c156a261ff33087bb0575150b1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/tileset_yellow.png"
-dest_files=["res://.godot/imported/tileset_yellow.png-862253719fdcfe1c0a229d271ec69a54.ctex"]
+source_file="res://assets/blackjack buttons/HitButton.png"
+dest_files=["res://.godot/imported/HitButton.png-20008c156a261ff33087bb0575150b1f.ctex"]
 
 [params]
 

@@ -1,10 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3d71mencc6ry"]
+[gd_scene load_steps=7 format=3 uid="uid://b3d71mencc6ry"]
 
-[ext_resource type="Texture2D" uid="uid://sfuse83cw7ix" path="res://assets/2inima_template_card.png" id="1_nmbkq"]
+[ext_resource type="Script" uid="uid://du2mrpa7wso43" path="res://blackjack/card.gd" id="1_eaedq"]
+[ext_resource type="Texture2D" uid="uid://blwhu44yqvrec" path="res://assets/cards/tileset_blue.png" id="1_tldl6"]
+[ext_resource type="Texture2D" uid="uid://cemhjuftfmo7x" path="res://assets/cards/tileset_green.png" id="3_r0e6s"]
+[ext_resource type="Texture2D" uid="uid://c36dvk8uay4e6" path="res://assets/cards/tileset_red.png" id="4_02yg6"]
+[ext_resource type="Texture2D" uid="uid://c4jmho20506wn" path="res://assets/cards/tileset_yellow.png" id="5_ltvo5"]
+[ext_resource type="Texture2D" uid="uid://bv6b5lw5g7r6l" path="res://assets/cards/card back.png" id="6_02yg6"]
 
 [node name="cardScene" type="Node2D"]
+script = ExtResource("1_eaedq")
 
-[node name="2InimaTemplateCard" type="Sprite2D" parent="."]
-position = Vector2(0, -3.05176e-05)
-scale = Vector2(1.22, 1.22)
-texture = ExtResource("1_nmbkq")
+[node name="TilesetBlue" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("1_tldl6")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 69)
+
+[node name="TilesetGreen" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("3_r0e6s")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 69)
+
+[node name="TilesetRed" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("4_02yg6")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 69)
+
+[node name="TilesetYellow" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("5_ltvo5")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 69)
+
+[node name="CardBack" type="Sprite2D" parent="."]
+visible = false
+z_index = 3981
+scale = Vector2(2, 2)
+texture = ExtResource("6_02yg6")

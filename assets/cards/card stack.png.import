@@ -2,15 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-path="res://.godot/imported/tileset_yellow.png-862253719fdcfe1c0a229d271ec69a54.ctex"
+uid="uid://crt231os23ini"
+path="res://.godot/imported/card stack.png-1f2d98aa33c3305b7499ff303fb54b5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/tileset_yellow.png"
-dest_files=["res://.godot/imported/tileset_yellow.png-862253719fdcfe1c0a229d271ec69a54.ctex"]
+source_file="res://assets/cards/card stack.png"
+dest_files=["res://.godot/imported/card stack.png-1f2d98aa33c3305b7499ff303fb54b5f.ctex"]
 
 [params]
 

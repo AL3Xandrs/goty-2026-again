@@ -7,14 +7,16 @@ const WEIGHT: int = 2
 
 var playerHand: Array
 @onready var cardScene = load("res://blackjack/card_scene.tscn")
+@onready var cardStack := $"../CardStackNode"
 
 func _ready() -> void:
 	playerHand.clear()
 
-func hit():
+func hit() -> void:
 	var newCard := _generateWeightedCard()
-	drawCard(newCard)
 	playerHand.append(newCard)
+	drawCard(newCard)
+	await get_tree().create_timer(0.5).timeout # acelasi timp cat animatia de draw
 	
 
 func getScore() -> int:
@@ -23,6 +25,7 @@ func getScore() -> int:
 	for card in playerHand:
 		var currentValue: int = card[VALUE]
 		sum += min(10, currentValue) # face din face cards in 10 ca la blackjack wow ce chestie
+		if currentValue == 1: aceCount+=1
 	for i in range(aceCount):
 		if sum + 10 <= 21:
 			sum += 10 # face asii automat mari daca se poate
@@ -60,19 +63,26 @@ func _generateWeightedCard() -> Array:
 func _generateRandomCard() -> Array:
 	var newCard: Array
 	newCard.append(randi_range(1, 13))
-	var newSuit: String = ["Spades", "Hearts", "Diamonds", "Clubs"][randi_range(0,3)]
+	var newSuit: String = ["Red", "Blue", "Green", "Yellow"][randi_range(0,3)]
 	newCard.append(newSuit)
 	return newCard
 
 
 func drawCard(card: Array):
 	var cardInstance = cardScene.instantiate()
-	cardInstance.position += Vector2(playerHand.size() * 40, 0)
-	add_child.call_deferred(cardInstance) 
+	var startPosition = cardStack.position - position
+	var finalPosition = Vector2(playerHand.size() * 40, 0)
+	cardInstance.startPosition = startPosition
+	cardInstance.finalPosition = finalPosition
+	cardInstance.value = card[VALUE]
+	cardInstance.suit = card[SUIT]
+	add_child.call_deferred(cardInstance)
+	
 
 func reset():
 	for node in get_children():
-		node.queue_free()
+		node.discard()
 	playerHand.clear()
 func isBusted() ->bool:
 	return (getScore() > 21)
+	

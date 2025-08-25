@@ -3,16 +3,18 @@ extends Node2D
 const PLAYERS_TURN: int = 1
 const DEALERS_TURN: int = 2
 
-var currentTurn: int = 1
+var currentTurn: int = 3
 
 @onready var dealerNode: DealerNode = $"./dealerHand"
 @onready var playerNode: PlayerNode  = $"./playerHand"
 @onready var buttonsNode = $"./buttons"
 @onready var cardScene = load("res://scenes/card_scene.tscn")
 @onready var players: Array = [playerNode, dealerNode]
-
+@onready var victoryScreen := $"./endingScreens/VictoryScreen"
+@onready var defeatScreen := $"./endingScreens/DefeatScreen"
+@onready var drawScreen := $"./endingScreens/DrawScreen"
 func _ready() -> void:
-	pass
+	startGame()
 
 func _process(delta: float) -> void:
 	pass
@@ -25,19 +27,18 @@ func runDealer():
 		await dealerNode.play()
 		print(dealerNode.getScore())
 		currentTurn = PLAYERS_TURN
-		await get_tree().create_timer(3.0).timeout
-		runWin()
-		dealerNode.reset()
-		playerNode.reset()
+		endGame()
+		await get_tree().create_timer(1.0).timeout
+		await startGame()
 
 func hit():
 	buttonsNode.hide()
-	playerNode.hit()
+	await playerNode.hit()
 	print(playerNode.playerHand)
 	print(playerNode.getScore())
 	if playerNode.isBusted():
-			currentTurn = DEALERS_TURN
-			await runDealer()
+		await get_tree().create_timer(1.0).timeout
+		startGame()
 	
 	buttonsNode.show()
 
@@ -58,5 +59,31 @@ func _onClickStand(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		# ^ cand apesi pe butonu stand practic
 		stand() # <- traznaie
 
-func runWin():
-	pass
+func endGame():
+	#TODO: cand am acces la player si alea sa fac chiar sa piarda bani si sa castige
+	if playerNode.getScore() > dealerNode.getScore() or dealerNode.isBusted():
+		print("Player won yippie")
+		victoryScreen.show()
+		await get_tree().create_timer(1.5).timeout
+		victoryScreen.hide()
+	elif playerNode.getScore() < dealerNode.getScore():
+		print("Dealer won rigged")
+		defeatScreen.show()
+		await get_tree().create_timer(1.5).timeout
+		defeatScreen.hide()
+	else:
+		print("wow its a draw :i")
+		drawScreen.show()
+		await get_tree().create_timer(1.5).timeout
+		drawScreen.hide()
+
+func startGame():
+	buttonsNode.hide()
+	dealerNode.reset()
+	playerNode.reset()
+	await playerNode.hit()
+	await dealerNode.hit()
+	await playerNode.hit()
+	await dealerNode.hit()
+	currentTurn = PLAYERS_TURN
+	buttonsNode.show()

@@ -1,55 +1,84 @@
-[gd_scene load_steps=7 format=3 uid="uid://244epntu5xut"]
+[gd_scene load_steps=10 format=3 uid="uid://244epntu5xut"]
 
 [ext_resource type="Script" uid="uid://jn5jygpasee7" path="res://blackjack/black_jack_scene.gd" id="1_sr83v"]
 [ext_resource type="Script" uid="uid://br0ek7mj0nydw" path="res://blackjack/player_hand.gd" id="2_a0x6j"]
 [ext_resource type="Script" uid="uid://6b21vsjnamps" path="res://blackjack/dealer_hand.gd" id="2_kegn5"]
 [ext_resource type="Texture2D" uid="uid://c6ot3kh7widfo" path="res://assets/icon.svg" id="3_kegn5"]
+[ext_resource type="Texture2D" uid="uid://lmg7oplrwxie" path="res://assets/blackjack buttons/HitButton.png" id="4_kegn5"]
+[ext_resource type="Texture2D" uid="uid://tejpsttxtga" path="res://assets/blackjack buttons/StandButton.png" id="5_tdvw6"]
+[ext_resource type="Texture2D" uid="uid://crt231os23ini" path="res://assets/cards/card stack.png" id="6_tdvw6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkuiw"]
-size = Vector2(111.75, 112)
+size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0x6j"]
-size = Vector2(111.5, 111.5)
+size = Vector2(127.438, 128.188)
 
 [node name="blackJackScene" type="Node2D"]
-position = Vector2(-2, 2)
 script = ExtResource("1_sr83v")
 
 [node name="dealerHand" type="Node2D" parent="."]
-position = Vector2(482, 144)
+position = Vector2(512, 192)
 script = ExtResource("2_kegn5")
 
 [node name="playerHand" type="Node2D" parent="."]
-position = Vector2(472, 329)
+position = Vector2(512, 384)
 script = ExtResource("2_a0x6j")
 
 [node name="buttons" type="Node2D" parent="."]
-position = Vector2(82, 147)
+position = Vector2(128, 384)
 
 [node name="hitButton" type="Area2D" parent="buttons"]
-position = Vector2(180, 247)
+position = Vector2(256, 96)
 
-[node name="hitButtonImage" type="Sprite2D" parent="buttons/hitButton"]
-position = Vector2(36.75, 64.75)
-scale = Vector2(0.878906, 0.878906)
-texture = ExtResource("3_kegn5")
+[node name="HitButtonImage" type="Sprite2D" parent="buttons/hitButton"]
+position = Vector2(0, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("4_kegn5")
 
 [node name="hitButtonCollision" type="CollisionShape2D" parent="buttons/hitButton"]
-position = Vector2(36.125, 64)
+position = Vector2(0, 72)
 shape = SubResource("RectangleShape2D_pkuiw")
 
-[node name="foldButton" type="Area2D" parent="buttons"]
-position = Vector2(553, 248)
+[node name="standButton" type="Area2D" parent="buttons"]
+position = Vector2(640, 96)
 
-[node name="foldButtonImage" type="Sprite2D" parent="buttons/foldButton"]
-position = Vector2(10, 61)
-scale = Vector2(0.871094, 0.871094)
-texture = ExtResource("3_kegn5")
+[node name="StandButton" type="Sprite2D" parent="buttons/standButton"]
+position = Vector2(0, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("5_tdvw6")
 
-[node name="standButtonCollision" type="CollisionShape2D" parent="buttons/foldButton"]
-position = Vector2(10.25, 59.25)
+[node name="standButtonCollision" type="CollisionShape2D" parent="buttons/standButton"]
+position = Vector2(0.28125, 71.9063)
 shape = SubResource("RectangleShape2D_a0x6j")
 debug_color = Color(0.968627, 0, 0, 0.419608)
 
+[node name="CardStackNode" type="Node2D" parent="."]
+position = Vector2(960, 320)
+
+[node name="CardStack" type="Sprite2D" parent="CardStackNode"]
+z_index = -3
+scale = Vector2(2, 2)
+texture = ExtResource("6_tdvw6")
+
+[node name="endingScreens" type="Node2D" parent="."]
+position = Vector2(576, 296)
+
+[node name="VictoryScreen" type="Sprite2D" parent="endingScreens"]
+visible = false
+z_index = 4096
+scale = Vector2(3.0625, 1)
+texture = ExtResource("3_kegn5")
+
+[node name="DefeatScreen" type="Sprite2D" parent="endingScreens"]
+visible = false
+scale = Vector2(0.5, 1)
+texture = ExtResource("3_kegn5")
+
+[node name="DrawScreen" type="Sprite2D" parent="endingScreens"]
+visible = false
+scale = Vector2(1, 0.3125)
+texture = ExtResource("3_kegn5")
+
 [connection signal="input_event" from="buttons/hitButton" to="." method="_onClickHit"]
-[connection signal="input_event" from="buttons/foldButton" to="." method="_onClickStand"]
+[connection signal="input_event" from="buttons/standButton" to="." method="_onClickStand"]

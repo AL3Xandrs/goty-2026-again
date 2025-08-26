@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfa8udjtnsmmy"
-path="res://.godot/imported/tileset_green.png-4403e9e3727e1df233473eee8cd3409a.ctex"
+uid="uid://d06gtqqit3dfe"
+path="res://.godot/imported/pc_0001_hit_button.png-805630009a5a300ee9527dedb8240f74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/tileset_green.png"
-dest_files=["res://.godot/imported/tileset_green.png-4403e9e3727e1df233473eee8cd3409a.ctex"]
+source_file="res://assets/pc thing/pc_0001_hit_button.png"
+dest_files=["res://.godot/imported/pc_0001_hit_button.png-805630009a5a300ee9527dedb8240f74.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfa8udjtnsmmy"
-path="res://.godot/imported/tileset_green.png-4403e9e3727e1df233473eee8cd3409a.ctex"
+uid="uid://d21pqg1ca2ffu"
+path="res://.godot/imported/room_0004_Rectangle-1.png-82ec6f51652302c2b3dd78538db8e12b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/tileset_green.png"
-dest_files=["res://.godot/imported/tileset_green.png-4403e9e3727e1df233473eee8cd3409a.ctex"]
+source_file="res://assets/main room/room_0004_Rectangle-1.png"
+dest_files=["res://.godot/imported/room_0004_Rectangle-1.png-82ec6f51652302c2b3dd78538db8e12b.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bylf02w6wovcm"
-path="res://.godot/imported/lemon_slot.png-647bf96f38be7bae11456397456c9d44.ctex"
+uid="uid://bjjrg5eaueye5"
+path="res://.godot/imported/pc_0004_Layer-8.png-191603deb84ab80a530b18bbe470f7a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/slots/lemon_slot.png"
-dest_files=["res://.godot/imported/lemon_slot.png-647bf96f38be7bae11456397456c9d44.ctex"]
+source_file="res://assets/pc thing/pc_0004_Layer-8.png"
+dest_files=["res://.godot/imported/pc_0004_Layer-8.png-191603deb84ab80a530b18bbe470f7a2.ctex"]
 
 [params]
 

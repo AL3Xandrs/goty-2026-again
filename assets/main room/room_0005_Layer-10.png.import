@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bylf02w6wovcm"
-path="res://.godot/imported/lemon_slot.png-647bf96f38be7bae11456397456c9d44.ctex"
+uid="uid://cxdl53ddrwjdo"
+path="res://.godot/imported/room_0005_Layer-10.png-a633e5d8e29a0d71b4ef8416a18f5413.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/slots/lemon_slot.png"
-dest_files=["res://.godot/imported/lemon_slot.png-647bf96f38be7bae11456397456c9d44.ctex"]
+source_file="res://assets/main room/room_0005_Layer-10.png"
+dest_files=["res://.godot/imported/room_0005_Layer-10.png-a633e5d8e29a0d71b4ef8416a18f5413.ctex"]
 
 [params]
 

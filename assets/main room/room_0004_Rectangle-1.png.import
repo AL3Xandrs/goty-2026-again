@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bylf02w6wovcm"
-path="res://.godot/imported/lemon_slot.png-647bf96f38be7bae11456397456c9d44.ctex"
+uid="uid://cgyqmubgi2rhm"
+path="res://.godot/imported/room_0004_Rectangle-1.png-82ec6f51652302c2b3dd78538db8e12b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/slots/lemon_slot.png"
-dest_files=["res://.godot/imported/lemon_slot.png-647bf96f38be7bae11456397456c9d44.ctex"]
+source_file="res://assets/main room/room_0004_Rectangle-1.png"
+dest_files=["res://.godot/imported/room_0004_Rectangle-1.png-82ec6f51652302c2b3dd78538db8e12b.ctex"]
 
 [params]
 

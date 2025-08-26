@@ -10,15 +10,13 @@ var playerHand: Array
 @onready var cardStack := $"../CardStackNode"
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_PAUSABLE
 	playerHand.clear()
 
 func hit() -> void:
-	
 	var newCard := _generateWeightedCard()
 	playerHand.append(newCard)
 	drawCard(newCard)
-	await get_tree().create_timer(0.5,false).timeout
+	await get_tree().create_timer(0.5).timeout # acelasi timp cat animatia de draw
 	
 
 func getScore() -> int:

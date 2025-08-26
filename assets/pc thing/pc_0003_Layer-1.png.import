@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgscqso8viyw7"
-path="res://.godot/imported/room_0005_Layer-10.png-a633e5d8e29a0d71b4ef8416a18f5413.ctex"
+uid="uid://dhq2prcfauhxb"
+path="res://.godot/imported/pc_0003_Layer-1.png-a4dee8963786be563b2e7133e088a223.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/main room/room_0005_Layer-10.png"
-dest_files=["res://.godot/imported/room_0005_Layer-10.png-a633e5d8e29a0d71b4ef8416a18f5413.ctex"]
+source_file="res://assets/pc thing/pc_0003_Layer-1.png"
+dest_files=["res://.godot/imported/pc_0003_Layer-1.png-a4dee8963786be563b2e7133e088a223.ctex"]
 
 [params]
 

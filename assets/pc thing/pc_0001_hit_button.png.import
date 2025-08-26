@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgscqso8viyw7"
-path="res://.godot/imported/room_0005_Layer-10.png-a633e5d8e29a0d71b4ef8416a18f5413.ctex"
+uid="uid://d06gtqqit3dfe"
+path="res://.godot/imported/pc_0001_hit_button.png-805630009a5a300ee9527dedb8240f74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/main room/room_0005_Layer-10.png"
-dest_files=["res://.godot/imported/room_0005_Layer-10.png-a633e5d8e29a0d71b4ef8416a18f5413.ctex"]
+source_file="res://assets/pc thing/pc_0001_hit_button.png"
+dest_files=["res://.godot/imported/pc_0001_hit_button.png-805630009a5a300ee9527dedb8240f74.ctex"]
 
 [params]
 

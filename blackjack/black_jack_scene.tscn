@@ -53,7 +53,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("6_tdvw6")
 
 [node name="endingScreens" type="Node2D" parent="."]
-position = Vector2(16, -136)
+position = Vector2(16, -128)
 
 [node name="VictoryScreen" type="Sprite2D" parent="endingScreens"]
 visible = false

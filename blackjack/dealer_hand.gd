@@ -9,6 +9,7 @@ var dealerHiddenCard: Card
 @onready var cardScene = load("res://blackjack/card_scene.tscn")
 @onready var cardStack := $"../CardStackNode"
 
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 

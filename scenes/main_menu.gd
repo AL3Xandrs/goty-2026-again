@@ -11,7 +11,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _onClickPlay(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		if !isInAnimation: mainNode.unpause()

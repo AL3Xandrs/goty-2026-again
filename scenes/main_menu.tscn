@@ -14,12 +14,14 @@ offset_bottom = 432.0
 texture = ExtResource("1_l6cm7")
 
 [node name="PlayButton" type="Button" parent="Background"]
+layout_mode = 0
 offset_left = 552.0
 offset_top = 272.0
 offset_right = 736.0
 offset_bottom = 472.0
 
 [node name="OptionsButton" type="Button" parent="Background"]
+layout_mode = 0
 offset_left = 512.0
 offset_top = 520.0
 offset_right = 704.0

@@ -9,7 +9,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	money=100
 	# var blackJackInstance = blackjack.instantiate()
-	# add_child.call_deferred(blackJackInstance)
+	# add_child.call_deferred(blackJackInstance)   
 
 func _process(delta: float) -> void:
 	pass

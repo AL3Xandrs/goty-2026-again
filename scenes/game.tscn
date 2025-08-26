@@ -21,7 +21,7 @@ script = ExtResource("1_p57ef")
 texture = ExtResource("1_7jktm")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(216, -136)
+position = Vector2(176, -128)
 script = ExtResource("2_ryrav")
 
 [node name="Icon" type="Sprite2D" parent="Player"]

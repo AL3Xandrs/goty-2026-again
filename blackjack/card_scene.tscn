@@ -1,10 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3d71mencc6ry"]
 
 [ext_resource type="Script" uid="uid://du2mrpa7wso43" path="res://blackjack/card.gd" id="1_eaedq"]
+<<<<<<< HEAD
+[ext_resource type="Texture2D" uid="uid://mrso6mymau00" path="res://assets/cards/tileset_blue.png" id="1_tldl6"]
+[ext_resource type="Texture2D" uid="uid://bbpqesuhvy1w2" path="res://assets/cards/tileset_green.png" id="3_r0e6s"]
+[ext_resource type="Texture2D" uid="uid://bwotqw4cqrwjq" path="res://assets/cards/tileset_red.png" id="4_02yg6"]
+[ext_resource type="Texture2D" uid="uid://c5dn1lblnck5g" path="res://assets/cards/tileset_yellow.png" id="5_ltvo5"]
+=======
 [ext_resource type="Texture2D" uid="uid://ctncwplqkm7sv" path="res://assets/cards/tileset_blue.png" id="1_tldl6"]
 [ext_resource type="Texture2D" uid="uid://bfa8udjtnsmmy" path="res://assets/cards/tileset_green.png" id="3_r0e6s"]
 [ext_resource type="Texture2D" uid="uid://c8n3occo3i846" path="res://assets/cards/tileset_red.png" id="4_02yg6"]
 [ext_resource type="Texture2D" uid="uid://bsp4pgtu4qowa" path="res://assets/cards/tileset_yellow.png" id="5_ltvo5"]
+>>>>>>> db20079dfe24da6627aca8e354ef6333d8b33ca8
 [ext_resource type="Texture2D" uid="uid://bv6b5lw5g7r6l" path="res://assets/cards/card back.png" id="6_02yg6"]
 
 [node name="cardScene" type="Node2D"]

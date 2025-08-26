@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://244epntu5xut"]
+[gd_scene load_steps=9 format=3 uid="uid://244epntu5xut"]
 
 [ext_resource type="Script" uid="uid://jn5jygpasee7" path="res://blackjack/black_jack_scene.gd" id="1_sr83v"]
 [ext_resource type="Script" uid="uid://br0ek7mj0nydw" path="res://blackjack/player_hand.gd" id="2_a0x6j"]
@@ -8,53 +8,44 @@
 [ext_resource type="Texture2D" uid="uid://tejpsttxtga" path="res://assets/blackjack buttons/StandButton.png" id="5_tdvw6"]
 [ext_resource type="Texture2D" uid="uid://crt231os23ini" path="res://assets/cards/card stack.png" id="6_tdvw6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkuiw"]
-size = Vector2(128, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0x6j"]
-size = Vector2(127.438, 128.188)
+[sub_resource type="LabelSettings" id="LabelSettings_x4jgr"]
 
 [node name="blackJackScene" type="Node2D"]
 script = ExtResource("1_sr83v")
 
 [node name="dealerHand" type="Node2D" parent="."]
-position = Vector2(512, 192)
+position = Vector2(-48, -240)
 script = ExtResource("2_kegn5")
 
 [node name="playerHand" type="Node2D" parent="."]
-position = Vector2(512, 384)
+position = Vector2(-48, -48)
 script = ExtResource("2_a0x6j")
 
 [node name="buttons" type="Node2D" parent="."]
-position = Vector2(128, 384)
+position = Vector2(-432, -48)
 
-[node name="hitButton" type="Area2D" parent="buttons"]
-position = Vector2(256, 96)
+[node name="hitButton" type="Button" parent="buttons"]
+offset_left = 184.0
+offset_top = 96.0
+offset_right = 328.0
+offset_bottom = 240.0
+icon = ExtResource("4_kegn5")
+flat = true
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
-[node name="HitButtonImage" type="Sprite2D" parent="buttons/hitButton"]
-position = Vector2(0, 72)
-scale = Vector2(2, 2)
-texture = ExtResource("4_kegn5")
-
-[node name="hitButtonCollision" type="CollisionShape2D" parent="buttons/hitButton"]
-position = Vector2(0, 72)
-shape = SubResource("RectangleShape2D_pkuiw")
-
-[node name="standButton" type="Area2D" parent="buttons"]
-position = Vector2(640, 96)
-
-[node name="StandButton" type="Sprite2D" parent="buttons/standButton"]
-position = Vector2(0, 72)
-scale = Vector2(2, 2)
-texture = ExtResource("5_tdvw6")
-
-[node name="standButtonCollision" type="CollisionShape2D" parent="buttons/standButton"]
-position = Vector2(0.28125, 71.9063)
-shape = SubResource("RectangleShape2D_a0x6j")
-debug_color = Color(0.968627, 0, 0, 0.419608)
+[node name="standButton" type="Button" parent="buttons"]
+offset_left = 576.0
+offset_top = 96.0
+offset_right = 720.0
+offset_bottom = 240.0
+icon = ExtResource("5_tdvw6")
+flat = true
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="CardStackNode" type="Node2D" parent="."]
-position = Vector2(960, 320)
+position = Vector2(400, -112)
 
 [node name="CardStack" type="Sprite2D" parent="CardStackNode"]
 z_index = -3
@@ -62,7 +53,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("6_tdvw6")
 
 [node name="endingScreens" type="Node2D" parent="."]
-position = Vector2(576, 296)
+position = Vector2(16, -128)
 
 [node name="VictoryScreen" type="Sprite2D" parent="endingScreens"]
 visible = false
@@ -80,5 +71,35 @@ visible = false
 scale = Vector2(1, 0.3125)
 texture = ExtResource("3_kegn5")
 
-[connection signal="input_event" from="buttons/hitButton" to="." method="_onClickHit"]
-[connection signal="input_event" from="buttons/standButton" to="." method="_onClickStand"]
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Bet" type="Node2D" parent="."]
+position = Vector2(0, 136)
+
+[node name="BetSlider" type="HSlider" parent="Bet"]
+offset_left = -104.0
+offset_top = -32.0
+offset_right = 112.0
+offset_bottom = -16.0
+
+[node name="BetLabel" type="Label" parent="Bet"]
+offset_left = -16.0
+offset_top = -56.0
+offset_right = 24.0
+offset_bottom = -24.0
+text = "bet"
+label_settings = SubResource("LabelSettings_x4jgr")
+
+[node name="BetButton" type="Button" parent="Bet"]
+offset_left = -32.0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 88.0
+icon = ExtResource("4_kegn5")
+flat = true
+expand_icon = true
+
+[connection signal="gui_input" from="buttons/hitButton" to="." method="_onClickHit"]
+[connection signal="gui_input" from="buttons/standButton" to="." method="_onClickStand"]
+[connection signal="value_changed" from="Bet/BetSlider" to="." method="_onBetSliderSlide"]
+[connection signal="gui_input" from="Bet/BetButton" to="." method="_onPressBet"]

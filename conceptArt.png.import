@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdynudc6cdq0r"
-path="res://.godot/imported/room_0000_Rectangle-2.png-178ad21c87837b98e094f5f9543f4487.ctex"
+uid="uid://b7wfnn8u0vqro"
+path="res://.godot/imported/conceptArt.png-f882d619f808da919a473009ae271dd9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/main room/room_0000_Rectangle-2.png"
-dest_files=["res://.godot/imported/room_0000_Rectangle-2.png-178ad21c87837b98e094f5f9543f4487.ctex"]
+source_file="res://conceptArt.png"
+dest_files=["res://.godot/imported/conceptArt.png-f882d619f808da919a473009ae271dd9.ctex"]
 
 [params]
 

@@ -10,7 +10,7 @@ var dealerHiddenCard: Card
 @onready var cardStack := $"../CardStackNode"
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_PAUSABLE
+	pass
 
 
 
@@ -20,17 +20,17 @@ func _process(delta: float) -> void:
 	
 func play():
 	dealerHiddenCard.showCard()
-	await get_tree().create_timer(1.0, false).timeout
+	await get_tree().create_timer(1.0).timeout
 	while getScore()<=16:
 		hit()
-		await get_tree().create_timer(1.0, false).timeout
+		await get_tree().create_timer(1.0).timeout
 		
 		
 func hit() -> void:
 	var newCard := _generateRandomCard()
 	dealerHand.append(newCard)
 	drawCard(newCard)
-	await get_tree().create_timer(0.5,false).timeout # acelasi timp cat animatia de draw)
+	await get_tree().create_timer(0.5).timeout # acelasi timp cat animatia de draw)
 
 func _generateRandomCard() -> Array:
 	var newCard: Array

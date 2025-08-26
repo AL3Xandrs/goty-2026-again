@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5dn1lblnck5g"
-path="res://.godot/imported/tileset_yellow.png-862253719fdcfe1c0a229d271ec69a54.ctex"
+uid="uid://72mdvdkadu3y"
+path="res://.godot/imported/lemon_slot.png-647bf96f38be7bae11456397456c9d44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/tileset_yellow.png"
-dest_files=["res://.godot/imported/tileset_yellow.png-862253719fdcfe1c0a229d271ec69a54.ctex"]
+source_file="res://assets/slots/lemon_slot.png"
+dest_files=["res://.godot/imported/lemon_slot.png-647bf96f38be7bae11456397456c9d44.ctex"]
 
 [params]
 

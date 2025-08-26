@@ -22,6 +22,7 @@ shape = SubResource("CircleShape2D_ndsss")
 debug_color = Color(0.97991, 0.750292, 0, 0.42)
 
 [node name="Label" type="Label" parent="."]
+visible = false
 z_index = 10
 anchors_preset = 8
 anchor_left = 0.5

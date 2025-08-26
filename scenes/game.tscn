@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://cpfqxxrf8ksro"]
+
+[ext_resource type="Texture2D" uid="uid://bcjq5vosn8pdw" path="res://assets/basic_template.png" id="1_7jktm"]
+[ext_resource type="Script" uid="uid://dbu0anegsqv7a" path="res://scenes/game.gd" id="1_p57ef"]
+[ext_resource type="Script" path="res://scripts/movement.gd" id="2_ryrav"]
+[ext_resource type="Texture2D" uid="uid://c6ot3kh7widfo" path="res://assets/icon.svg" id="3_eow3j"]
+[ext_resource type="PackedScene" uid="uid://d0dac7pylsiwn" path="res://interaction/interacting_component.tscn" id="4_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://ync7sqlq1n1f" path="res://interaction/window.tscn" id="5_vef74"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hve3p"]
+radius = 69.0
+height = 138.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
+font_size = 91
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_p57ef")
+
+[node name="BasicTemplate" type="Sprite2D" parent="."]
+texture = ExtResource("1_7jktm")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(216, -136)
+script = ExtResource("2_ryrav")
+
+[node name="Icon" type="Sprite2D" parent="Player"]
+texture = ExtResource("3_eow3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(0.9, 0.9)
+shape = SubResource("CapsuleShape2D_hve3p")
+debug_color = Color(0.913045, 9.22185e-05, 0.721106, 0.42)
+
+[node name="InteractingComponent" parent="Player" instance=ExtResource("4_j5wjh")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
+
+[node name="Window" parent="." instance=ExtResource("5_vef74")]
+position = Vector2(-121, -297)
+rotation = 1.5708
+scale = Vector2(1.04, 2.44)
+
+[node name="MoneyLabel" type="Label" parent="."]
+offset_left = 376.0
+offset_top = -440.0
+offset_right = 736.0
+offset_bottom = -315.0
+label_settings = SubResource("LabelSettings_u5sy4")
+horizontal_alignment = 2

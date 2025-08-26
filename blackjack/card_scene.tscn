@@ -1,10 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3d71mencc6ry"]
 
 [ext_resource type="Script" uid="uid://du2mrpa7wso43" path="res://blackjack/card.gd" id="1_eaedq"]
+
 [ext_resource type="Texture2D" uid="uid://cw5ni4uddwxi0" path="res://assets/cards/tileset_blue.png" id="1_tldl6"]
 [ext_resource type="Texture2D" uid="uid://dfuusfujmjd4d" path="res://assets/cards/tileset_green.png" id="3_r0e6s"]
 [ext_resource type="Texture2D" uid="uid://dejuwrsb1irfe" path="res://assets/cards/tileset_red.png" id="4_02yg6"]
 [ext_resource type="Texture2D" uid="uid://bt1thsnf3n7ey" path="res://assets/cards/tileset_yellow.png" id="5_ltvo5"]
+
 [ext_resource type="Texture2D" uid="uid://bv6b5lw5g7r6l" path="res://assets/cards/card back.png" id="6_02yg6"]
 
 [node name="cardScene" type="Node2D"]

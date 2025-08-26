@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfa8udjtnsmmy"
-path="res://.godot/imported/tileset_green.png-4403e9e3727e1df233473eee8cd3409a.ctex"
+uid="uid://bka0xcfro1tgn"
+path="res://.godot/imported/clover_slot.png-3a3fc4f6e77c1be740c91cedb795ace2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/tileset_green.png"
-dest_files=["res://.godot/imported/tileset_green.png-4403e9e3727e1df233473eee8cd3409a.ctex"]
+source_file="res://assets/slots/clover_slot.png"
+dest_files=["res://.godot/imported/clover_slot.png-3a3fc4f6e77c1be740c91cedb795ace2.ctex"]
 
 [params]
 

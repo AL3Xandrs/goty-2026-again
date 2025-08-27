@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbq7qulkwcan0"]
+
+[ext_resource type="Script" uid="uid://c73t4ep6jy6pa" path="res://barbut/barbut_scene.gd" id="1_k86am"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1s0nb"]
+
+[node name="BarbutScene" type="Node2D"]
+script = ExtResource("1_k86am")
+
+[node name="Bet" type="Node2D" parent="."]
+position = Vector2(-32, 88)
+
+[node name="BetButton" type="Button" parent="Bet"]
+offset_left = -32.0
+offset_top = 72.0
+offset_right = 24.0
+offset_bottom = 120.0
+
+[node name="BetSlider" type="VSlider" parent="Bet"]
+offset_left = -56.0
+offset_top = -8.0
+offset_right = -40.0
+offset_bottom = 120.0
+
+[node name="BetLabel" type="Label" parent="Bet"]
+offset_left = -32.0
+offset_top = 40.0
+offset_right = 38.0
+offset_bottom = 80.0
+text = "Bet:"
+label_settings = SubResource("LabelSettings_1s0nb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PlayerOrigin" type="Node2D" parent="."]
+position = Vector2(296, 296)
+
+[node name="EnemyOrigin" type="Node2D" parent="."]
+position = Vector2(-248, -304)
+
+[connection signal="gui_input" from="Bet/BetButton" to="." method="_onBetButtonClick"]
+[connection signal="value_changed" from="Bet/BetSlider" to="." method="_onBetSliderChanged"]

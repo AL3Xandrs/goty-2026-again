@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ovafjvpu8wr3"]
+
+[ext_resource type="Script" uid="uid://l8ntymtxu47c" path="res://barbut/dice.gd" id="1_vh7wq"]
+[ext_resource type="Texture2D" uid="uid://b45i23d6wsg1s" path="res://barbut/barbut assets/diceSheet.png" id="2_j516h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hu7ic"]
+radius = 16.0
+
+[node name="RigidBody2D" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_vh7wq")
+
+[node name="DiceSheet" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_j516h")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hu7ic")
+debug_color = Color(0, 0.527211, 0.999288, 0.42)

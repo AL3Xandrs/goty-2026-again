@@ -1,27 +1,49 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpfqxxrf8ksro"]
+[gd_scene load_steps=13 format=3 uid="uid://cpfqxxrf8ksro"]
 
-[ext_resource type="Texture2D" uid="uid://bcjq5vosn8pdw" path="res://assets/basic_template.png" id="1_7jktm"]
 [ext_resource type="Script" uid="uid://dbu0anegsqv7a" path="res://scenes/game.gd" id="1_p57ef"]
-[ext_resource type="Script" path="res://scripts/movement.gd" id="2_ryrav"]
+[ext_resource type="Texture2D" uid="uid://c3hj4cg8v4oo" path="res://assets/main room/rug.png" id="2_p57ef"]
+[ext_resource type="Script" uid="uid://dieatucxcca37" path="res://scripts/movement.gd" id="2_ryrav"]
 [ext_resource type="Texture2D" uid="uid://c6ot3kh7widfo" path="res://assets/icon.svg" id="3_eow3j"]
 [ext_resource type="PackedScene" uid="uid://d0dac7pylsiwn" path="res://interaction/interacting_component.tscn" id="4_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://ync7sqlq1n1f" path="res://interaction/window.tscn" id="5_vef74"]
+[ext_resource type="Script" uid="uid://bx7asx7jsiykw" path="res://scenes/computer.gd" id="7_gee14"]
+[ext_resource type="PackedScene" uid="uid://cv8r3j7jx2j14" path="res://interaction/interactable.tscn" id="7_u5sy4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
+font_size = 91
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hve3p"]
 radius = 69.0
 height = 138.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
-font_size = 91
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
+size = Vector2(92, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
+size = Vector2(77, 177)
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_p57ef")
 
 [node name="BasicTemplate" type="Sprite2D" parent="."]
-texture = ExtResource("1_7jktm")
+texture = ExtResource("2_p57ef")
+
+[node name="MoneyLabel" type="Label" parent="."]
+z_index = 4096
+offset_left = 192.0
+offset_top = -328.0
+offset_right = 552.0
+offset_bottom = -203.0
+label_settings = SubResource("LabelSettings_u5sy4")
+horizontal_alignment = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Window" parent="." instance=ExtResource("5_vef74")]
+position = Vector2(16, -240)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(176, -128)
+position = Vector2(336, 0)
 script = ExtResource("2_ryrav")
 
 [node name="Icon" type="Sprite2D" parent="Player"]
@@ -34,18 +56,18 @@ debug_color = Color(0.913045, 9.22185e-05, 0.721106, 0.42)
 
 [node name="InteractingComponent" parent="Player" instance=ExtResource("4_j5wjh")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.75, 0.75)
+[node name="Computer" type="StaticBody2D" parent="."]
+position = Vector2(424, 8)
+script = ExtResource("7_gee14")
 
-[node name="Window" parent="." instance=ExtResource("5_vef74")]
-position = Vector2(-121, -297)
-rotation = 1.5708
-scale = Vector2(1.04, 2.44)
+[node name="ComputerCollision" type="CollisionShape2D" parent="Computer"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_gee14")
 
-[node name="MoneyLabel" type="Label" parent="."]
-offset_left = 376.0
-offset_top = -440.0
-offset_right = 736.0
-offset_bottom = -315.0
-label_settings = SubResource("LabelSettings_u5sy4")
-horizontal_alignment = 2
+[node name="interactable" parent="Computer" instance=ExtResource("7_u5sy4")]
+interact_name = "Open computer"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Computer/interactable"]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_0tnpc")
+debug_color = Color(0.94902, 0, 0, 0.356863)

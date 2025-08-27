@@ -12,6 +12,7 @@ script = ExtResource("1_eaedq")
 
 [node name="TilesetBlue" type="Sprite2D" parent="."]
 visible = false
+z_index = 302
 scale = Vector2(2, 2)
 texture = ExtResource("1_tldl6")
 region_enabled = true
@@ -19,6 +20,7 @@ region_rect = Rect2(0, 0, 50, 69)
 
 [node name="TilesetGreen" type="Sprite2D" parent="."]
 visible = false
+z_index = 302
 scale = Vector2(2, 2)
 texture = ExtResource("3_r0e6s")
 region_enabled = true
@@ -26,6 +28,7 @@ region_rect = Rect2(0, 0, 50, 69)
 
 [node name="TilesetRed" type="Sprite2D" parent="."]
 visible = false
+z_index = 302
 scale = Vector2(2, 2)
 texture = ExtResource("4_02yg6")
 region_enabled = true
@@ -33,6 +36,7 @@ region_rect = Rect2(0, 0, 50, 69)
 
 [node name="TilesetYellow" type="Sprite2D" parent="."]
 visible = false
+z_index = 302
 scale = Vector2(2, 2)
 texture = ExtResource("5_ltvo5")
 region_enabled = true
@@ -40,6 +44,6 @@ region_rect = Rect2(0, 0, 50, 69)
 
 [node name="CardBack" type="Sprite2D" parent="."]
 visible = false
-z_index = 3981
+z_index = 303
 scale = Vector2(2, 2)
 texture = ExtResource("6_02yg6")

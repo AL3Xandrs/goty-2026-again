@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://ync7sqlq1n1f"]
+
+[ext_resource type="Texture2D" uid="uid://sfuse83cw7ix" path="res://assets/2inima_template_card.png" id="1_xei8y"]
+[ext_resource type="Script" uid="uid://8qgtd5xjbprb" path="res://interaction/window.gd" id="1_xjadj"]
+[ext_resource type="PackedScene" uid="uid://cv8r3j7jx2j14" path="res://interaction/interactable.tscn" id="2_xjadj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jt2s0"]
+radius = 24.0
+height = 68.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_246na"]
+radius = 37.0
+height = 90.0
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_xjadj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xei8y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_jt2s0")
+
+[node name="interactable" parent="." instance=ExtResource("2_xjadj")]
+interact_name = "Close window"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable"]
+shape = SubResource("CapsuleShape2D_246na")
+debug_color = Color(0.893211, 0.091267, 0, 0.4)

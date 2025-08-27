@@ -1,0 +1,311 @@
+[gd_scene load_steps=6 format=3 uid="uid://8lvtub6pjt5p"]
+
+[ext_resource type="Texture2D" uid="uid://c6ot3kh7widfo" path="res://assets/icon.svg" id="1_e4pai"]
+[ext_resource type="Script" uid="uid://ctejqtu5crxdk" path="res://slots/slots_scene.gd" id="1_pnfdd"]
+[ext_resource type="Script" uid="uid://r5v3fvce4hl" path="res://slots/reels.gd" id="3_vg3qo"]
+[ext_resource type="Texture2D" uid="uid://bjj2f100sc48f" path="res://assets/slots/symbol_spritesheet.png" id="4_hddjk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k78k"]
+atlas = ExtResource("4_hddjk")
+region = Rect2(0, 0, 16, 16)
+
+[node name="slots_scene" type="Node2D"]
+script = ExtResource("1_pnfdd")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="buttons" type="Node2D" parent="."]
+
+[node name="bet_buttons" type="Node2D" parent="buttons"]
+
+[node name="bet1" type="Button" parent="buttons/bet_buttons"]
+offset_left = -216.0
+offset_top = 240.0
+offset_right = -168.0
+offset_bottom = 272.0
+icon = ExtResource("1_e4pai")
+icon_alignment = 1
+expand_icon = true
+
+[node name="bet2" type="Button" parent="buttons/bet_buttons"]
+offset_left = -152.0
+offset_top = 240.0
+offset_right = -104.0
+offset_bottom = 272.0
+icon = ExtResource("1_e4pai")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="bet3" type="Button" parent="buttons/bet_buttons"]
+offset_left = -88.0
+offset_top = 240.0
+offset_right = -40.0
+offset_bottom = 272.0
+icon = ExtResource("1_e4pai")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="bet4" type="Button" parent="buttons/bet_buttons"]
+offset_left = -24.0
+offset_top = 240.0
+offset_right = 24.0
+offset_bottom = 272.0
+icon = ExtResource("1_e4pai")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="bet5" type="Button" parent="buttons/bet_buttons"]
+offset_left = 40.0
+offset_top = 240.0
+offset_right = 88.0
+offset_bottom = 272.0
+icon = ExtResource("1_e4pai")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="bet6" type="Button" parent="buttons/bet_buttons"]
+offset_left = 104.0
+offset_top = 240.0
+offset_right = 152.0
+offset_bottom = 272.0
+icon = ExtResource("1_e4pai")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="bet7" type="Button" parent="buttons/bet_buttons"]
+offset_left = 168.0
+offset_top = 240.0
+offset_right = 216.0
+offset_bottom = 272.0
+icon = ExtResource("1_e4pai")
+icon_alignment = 1
+expand_icon = true
+
+[node name="play_button" type="Button" parent="buttons"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 408.0
+offset_top = -40.0
+offset_right = 488.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("1_e4pai")
+icon_alignment = 1
+expand_icon = true
+
+[node name="reels" type="Node2D" parent="."]
+script = ExtResource("3_vg3qo")
+
+[node name="reel1" type="Node2D" parent="reels"]
+position = Vector2(-256, 0)
+
+[node name="dummy" type="TextureRect" parent="reels/reel1"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -296.0
+offset_right = 40.0
+offset_bottom = -216.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol1" type="TextureRect" parent="reels/reel1"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -168.0
+offset_right = 40.0
+offset_bottom = -88.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol2" type="TextureRect" parent="reels/reel1"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol3" type="TextureRect" parent="reels/reel1"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = 88.0
+offset_right = 40.0
+offset_bottom = 168.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="reel2" type="Node2D" parent="reels"]
+position = Vector2(-128, 0)
+
+[node name="dummy" type="TextureRect" parent="reels/reel2"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -296.0
+offset_right = 40.0
+offset_bottom = -216.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol1" type="TextureRect" parent="reels/reel2"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -168.0
+offset_right = 40.0
+offset_bottom = -88.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol2" type="TextureRect" parent="reels/reel2"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol3" type="TextureRect" parent="reels/reel2"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = 88.0
+offset_right = 40.0
+offset_bottom = 168.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="reel3" type="Node2D" parent="reels"]
+
+[node name="dummy" type="TextureRect" parent="reels/reel3"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -296.0
+offset_right = 40.0
+offset_bottom = -216.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol1" type="TextureRect" parent="reels/reel3"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -168.0
+offset_right = 40.0
+offset_bottom = -88.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol2" type="TextureRect" parent="reels/reel3"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol3" type="TextureRect" parent="reels/reel3"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = 88.0
+offset_right = 40.0
+offset_bottom = 168.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="reel4" type="Node2D" parent="reels"]
+position = Vector2(128, 0)
+
+[node name="dummy" type="TextureRect" parent="reels/reel4"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -296.0
+offset_right = 40.0
+offset_bottom = -216.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol1" type="TextureRect" parent="reels/reel4"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -168.0
+offset_right = 40.0
+offset_bottom = -88.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol2" type="TextureRect" parent="reels/reel4"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol3" type="TextureRect" parent="reels/reel4"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = 88.0
+offset_right = 40.0
+offset_bottom = 168.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="reel5" type="Node2D" parent="reels"]
+position = Vector2(256, 0)
+
+[node name="dummy" type="TextureRect" parent="reels/reel5"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -296.0
+offset_right = 40.0
+offset_bottom = -216.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol1" type="TextureRect" parent="reels/reel5"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -168.0
+offset_right = 40.0
+offset_bottom = -88.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol2" type="TextureRect" parent="reels/reel5"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="symbol3" type="TextureRect" parent="reels/reel5"]
+texture_filter = 1
+offset_left = -40.0
+offset_top = 88.0
+offset_right = 40.0
+offset_bottom = 168.0
+texture = SubResource("AtlasTexture_6k78k")
+metadata/_edit_use_anchors_ = true
+
+[node name="Line2D" type="Line2D" parent="reels"]
+position = Vector2(-320, 192)
+points = PackedVector2Array(0, 0, 640, 0, 640, -384, 0, -384)
+closed = true
+width = 2.12
+
+[connection signal="pressed" from="buttons/bet_buttons/bet1" to="reels" method="_on_bet_1_pressed"]
+[connection signal="pressed" from="buttons/play_button" to="reels" method="_on_play_button_pressed"]

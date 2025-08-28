@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://do7dolks675cv"]
+
+[ext_resource type="Script" uid="uid://cbht6t8y8rxk4" path="res://slots/reel.gd" id="1_tna8t"]
+[ext_resource type="Texture2D" uid="uid://bjj2f100sc48f" path="res://assets/slots/symbol_spritesheet.png" id="1_typk0"]
+
+[node name="reel" type="Node2D"]
+script = ExtResource("1_tna8t")
+
+[node name="dummy" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -256)
+scale = Vector2(5, 5)
+texture = ExtResource("1_typk0")
+hframes = 8
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 16)
+
+[node name="symbol1" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -128)
+scale = Vector2(5, 5)
+texture = ExtResource("1_typk0")
+hframes = 8
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 16)
+
+[node name="symbol2" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = ExtResource("1_typk0")
+hframes = 8
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 16)
+
+[node name="symbol3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 128)
+scale = Vector2(5, 5)
+texture = ExtResource("1_typk0")
+hframes = 8
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 16)

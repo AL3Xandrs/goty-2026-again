@@ -99,7 +99,7 @@ func play():
 		final_symbols = calc_tablou()
 		for r in range(5):
 			reels[r].spin(final_symbols[r])
-		await get_tree().create_timer(2.4,false).timeout
+		await get_tree().create_timer(4,false).timeout
 		is_spinning = false
 	
 	

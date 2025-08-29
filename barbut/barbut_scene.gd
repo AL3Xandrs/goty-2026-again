@@ -72,6 +72,9 @@ func endGame():
 		pity = clamp(pity+1, 1, 10)
 	else:
 		makeEndScreen("draw")
+	if gameNode.money <= 75:
+		pity = 4
+
 	startBet()
 
 func rollDice() -> int:
@@ -141,3 +144,9 @@ func _onHoverInfo() -> void:
 
 func _onUnhoverInfo() -> void:
 	infoYap.hide()
+
+func exitGame():
+	var fader = create_tween()
+	fader.tween_property(self, "modulate:a", 0, 1.0)
+	await fader.finished
+	queue_free()

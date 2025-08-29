@@ -27,4 +27,7 @@ func _on_interact():
 	else:
 		playerNode.isBusy = 0
 		activeScreen.hide()
-	
+
+func updateLevel():
+	print("a")
+	activeScreen.updateLevel()

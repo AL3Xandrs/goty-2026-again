@@ -1,30 +1,61 @@
-[gd_scene load_steps=6 format=3 uid="uid://ync7sqlq1n1f"]
+[gd_scene load_steps=11 format=3 uid="uid://ync7sqlq1n1f"]
 
 [ext_resource type="Script" uid="uid://8qgtd5xjbprb" path="res://interaction/window.gd" id="1_xjadj"]
 [ext_resource type="Texture2D" uid="uid://b8cpmvwl88wuu" path="res://assets/main room/room_0003_Layer-14.png" id="2_jt2s0"]
 [ext_resource type="PackedScene" uid="uid://cv8r3j7jx2j14" path="res://interaction/interactable.tscn" id="2_xjadj"]
+[ext_resource type="Texture2D" uid="uid://44er0cvdg5pw" path="res://assets/main room/room_0002_Layer-15.png" id="3_jt2s0"]
+[ext_resource type="Texture2D" uid="uid://dhrindqi4tp0h" path="res://assets/main room/upwindow2.png" id="4_w6qkq"]
+[ext_resource type="AudioStream" uid="uid://bscdebg2eskrn" path="res://assets/sounds/WIndow1.wav" id="5_246na"]
+[ext_resource type="Texture2D" uid="uid://ds772kcdp7wj6" path="res://assets/main room/downwindow2.png" id="5_tarxg"]
+[ext_resource type="AudioStream" uid="uid://cts7vu6iyo70j" path="res://assets/sounds/Window2.wav" id="6_hueh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_246na"]
 size = Vector2(160, 42)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_246na"]
-radius = 64.0
-height = 128.0
+radius = 16.0
+height = 160.0
 
 [node name="StaticBody2D" type="StaticBody2D"]
 script = ExtResource("1_xjadj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="TopWindowSprite" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_jt2s0")
 
+[node name="BottomWindowSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-8, 56)
+texture = ExtResource("3_jt2s0")
+
+[node name="TopWindowOpen" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_w6qkq")
+
+[node name="BottomWindowOpen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-8, 56)
+rotation = -6.28318
+texture = ExtResource("5_tarxg")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 40)
 shape = SubResource("RectangleShape2D_246na")
 
 [node name="interactable" parent="." instance=ExtResource("2_xjadj")]
-interact_name = "Close window"
+visible = false
+interact_name = "Close window (Spam E)"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactable"]
-position = Vector2(-8, 0)
+position = Vector2(0, 40)
+rotation = -1.57079
 shape = SubResource("CapsuleShape2D_246na")
 debug_color = Color(0.893211, 0.091267, 0, 0.4)
+
+[node name="KnockingSoundBottom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_246na")
+max_polyphony = 2
+
+[node name="KnockingSoundTop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_hueh5")

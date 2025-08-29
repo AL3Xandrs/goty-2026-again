@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c3hj4cg8v4oo" path="res://assets/main room/rug.png" id="2_p57ef"]
 [ext_resource type="Script" uid="uid://dieatucxcca37" path="res://scripts/movement.gd" id="2_ryrav"]
 [ext_resource type="FontFile" uid="uid://crnyr53f41dyj" path="res://assets/Tiny5-Regular.ttf" id="3_0tnpc"]
-[ext_resource type="Texture2D" uid="uid://c6ot3kh7widfo" path="res://assets/icon.svg" id="3_eow3j"]
 [ext_resource type="PackedScene" uid="uid://d0dac7pylsiwn" path="res://interaction/interacting_component.tscn" id="4_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://bspn7te10aro8" path="res://assets/main room/u.png" id="5_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://ync7sqlq1n1f" path="res://interaction/window.tscn" id="5_vef74"]
 [ext_resource type="Script" uid="uid://bx7asx7jsiykw" path="res://scenes/computer.gd" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://cv8r3j7jx2j14" path="res://interaction/interactable.tscn" id="7_u5sy4"]
@@ -14,15 +14,15 @@
 font = ExtResource("3_0tnpc")
 font_size = 91
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hve3p"]
-radius = 69.0
-height = 138.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
 size = Vector2(92, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(77, 177)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hve3p"]
+radius = 26.6667
+height = 88.8889
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_p57ef")
@@ -41,23 +41,6 @@ horizontal_alignment = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Window" parent="." instance=ExtResource("5_vef74")]
-position = Vector2(16, -240)
-
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(336, 0)
-script = ExtResource("2_ryrav")
-
-[node name="Icon" type="Sprite2D" parent="Player"]
-texture = ExtResource("3_eow3j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-scale = Vector2(0.9, 0.9)
-shape = SubResource("CapsuleShape2D_hve3p")
-debug_color = Color(0.913045, 9.22185e-05, 0.721106, 0.42)
-
-[node name="InteractingComponent" parent="Player" instance=ExtResource("4_j5wjh")]
-
 [node name="Computer" type="StaticBody2D" parent="."]
 position = Vector2(424, 8)
 script = ExtResource("7_gee14")
@@ -73,3 +56,32 @@ interact_name = "Open computer"
 position = Vector2(1.5, -0.5)
 shape = SubResource("RectangleShape2D_0tnpc")
 debug_color = Color(0.94902, 0, 0, 0.356863)
+
+[node name="Window" parent="." instance=ExtResource("5_vef74")]
+position = Vector2(16, -240)
+typeOfWindow = "Top Window"
+
+[node name="BottomWindow" parent="." instance=ExtResource("5_vef74")]
+position = Vector2(8, 226)
+typeOfWindow = "Bottom Window"
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(336, 0)
+script = ExtResource("2_ryrav")
+
+[node name="Icon" type="Sprite2D" parent="Player"]
+position = Vector2(1.90735e-06, 7.62939e-06)
+scale = Vector2(2.68182, 2.68182)
+texture = ExtResource("5_kvpfn")
+hframes = 2
+vframes = 3
+region_rect = Rect2(0, 0, 50, 55)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 40)
+rotation = -1.57079
+scale = Vector2(0.9, 0.9)
+shape = SubResource("CapsuleShape2D_hve3p")
+debug_color = Color(0.913045, 9.22185e-05, 0.721106, 0.42)
+
+[node name="InteractingComponent" parent="Player" instance=ExtResource("4_j5wjh")]

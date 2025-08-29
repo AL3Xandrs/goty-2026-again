@@ -46,6 +46,8 @@ func _generateWeightedCard() -> Array:
 		#while newCard not in playerHand:     # to no thave repeats
 		#	newCard = _generateRandomCard()   # ts crashes godot xdd xd
 		var weight: int = handScore + newCard[VALUE]
+		if newCard[VALUE] == 1 and weight + 10 <=21:
+			weight = 21
 		if weight > 21:
 			weight = -1
 		if weight > maxWeight:

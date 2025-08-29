@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var blackjack = load("res://blackjack/black_jack_scene.tscn")
 @onready var dice = load("res://barbut/barbut_scene.tscn")
+@onready var slots = load("res://slots/slots_scene.tscn")
 @onready var gameNode = $".."
 
 @onready var playerNode = $"../../Player"
@@ -52,7 +53,11 @@ func _onClickBlackjack(event: InputEvent) -> void:
 
 
 func _onClickSlots(event: InputEvent) -> void:
-	pass # Replace with function body.
+	if gameNode.level == 3 and event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		var slotsInstance = slots.instantiate()
+		add_child.call_deferred(slotsInstance)
+		activeGame = slotsInstance
+		buttonsNode.hide()
 
 
 func _onMouseEnteredBarbut() -> void:
@@ -71,3 +76,12 @@ func _onHoverBlackjack() -> void:
 
 func _onUnhoverBlackjack() -> void:
 	blackjackButton.scale = Vector2(1, 1)
+
+
+func _onMouseHover() -> void:
+	if gameNode.level == 3:
+		slotsButton.scale = Vector2(1.5, 1.5)
+
+
+func _onMouseUnhover() -> void:
+	slotsButton.scale = Vector2(1, 1)

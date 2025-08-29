@@ -4,8 +4,10 @@ extends Node2D
 @onready var reels = [$reel1, $reel2, $reel3, $reel4, $reel5]
 var is_spinning = false
 var final_symbols := []
-var money :int
+# var money :int
 var current_bet :int = 10
+
+@onready var gameNode := $"../../.."
 
 var weights_default = {
 	"7":4,
@@ -114,15 +116,16 @@ func calc_tablou():
 	return final_symbols2
 
 func play():
-	if !is_spinning:
+	if !is_spinning and current_bet <= gameNode.money:
 		is_spinning = true
 		final_symbols = calc_tablou()
-		money -= current_bet
-		money += score()
+		var currentScore = score()
+		gameNode.money -= current_bet
 		for r in range(5):
 			reels[r].spin(final_symbols[r])
 		await get_tree().create_timer(4,false).timeout
 		is_spinning = false
+		gameNode.money += currentScore
 
 func score():
 	var first:String

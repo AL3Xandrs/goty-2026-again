@@ -31,3 +31,6 @@ func _on_interact():
 func updateLevel():
 	print("a")
 	activeScreen.updateLevel()
+
+func killScreen():
+	activeScreen.queue_free()

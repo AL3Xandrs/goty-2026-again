@@ -3,17 +3,9 @@ extends Node2D
 @export var bias_mult := 1
 @onready var reels = [$reel1, $reel2, $reel3, $reel4, $reel5]
 var is_spinning = false
-
-#var weights_default = {
-	#"7":7,
-	#"Crown":10,
-	#"clover":14,
-	#"bell":19,
-	#"grape":20,
-	#"melon":20,
-	#"lemon":30,
-	#"cherry":30,
-	#} #old probability
+var final_symbols := []
+var money :int
+var current_bet :int
 
 var weights_default = {
 	"7":4,
@@ -29,16 +21,13 @@ var weights_default = {
 var multiplier_table = {
 	"7":[0,0,1,5,25,500],
 	"Crown":[0,0,0,4,12,70],
-	"clover":[0,0,0,4,12,70],
-	"bell":11,
-	"grape":13,
-	"melon":15,
-	"lemon":24,
-	"cherry":18,
+	"clover":[0,0,0,4,8,35],
+	"bell":[0,0,0,3,6,30],
+	"grape":[0,0,0,3,5,25],
+	"melon":[0,0,0,2,5,20],
+	"lemon":[0,0,0,2,4,20],
+	"cherry":[0,0,0,1,3,15],
 	}
-
-
-var final_symbols := []
 
 func _ready() -> void:
 	randomize()
@@ -52,7 +41,25 @@ func _on_play_button_pressed() -> void:
 	play()
 
 func _on_bet_1_pressed() -> void:
-	pass
+	current_bet = 10
+
+func _on_bet_2_pressed() -> void:
+	current_bet = 25
+
+func _on_bet_3_pressed() -> void:
+	current_bet = 50
+
+func _on_bet_4_pressed() -> void:
+	current_bet = 75
+
+func _on_bet_5_pressed() -> void:
+	current_bet = 100
+
+func _on_bet_6_pressed() -> void:
+	current_bet = 150
+
+func _on_bet_7_pressed() -> void:
+	current_bet = 200
 
 func pick_symbol(weights:Dictionary):
 	var total_weight = 0
@@ -101,7 +108,11 @@ func play():
 			reels[r].spin(final_symbols[r])
 		await get_tree().create_timer(4,false).timeout
 		is_spinning = false
-	
-	
-	
+
+func top_line():
+	var first = final_symbols[0][0]
+	var count = 0 
+	var i=1
+	while final_symbols[1][i] == first and i<5:
+		count+=1
 	

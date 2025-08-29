@@ -143,3 +143,9 @@ func _onHoverInfo() -> void:
 
 func _onUnhoverInfo() -> void:
 	infoYap.hide()
+
+func exitGame():
+	var fader = create_tween()
+	fader.tween_property(self, "modulate:a", 0, 1.0)
+	await fader.finished
+	queue_free()

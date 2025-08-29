@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cpfqxxrf8ksro"]
+[gd_scene load_steps=14 format=3 uid="uid://cpfqxxrf8ksro"]
 
 [ext_resource type="Script" uid="uid://dbu0anegsqv7a" path="res://scenes/game.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://c3hj4cg8v4oo" path="res://assets/main room/rug.png" id="2_p57ef"]
@@ -9,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://ync7sqlq1n1f" path="res://interaction/window.tscn" id="5_vef74"]
 [ext_resource type="Script" uid="uid://bx7asx7jsiykw" path="res://scenes/computer.gd" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://cv8r3j7jx2j14" path="res://interaction/interactable.tscn" id="7_u5sy4"]
-[ext_resource type="Script" uid="uid://b3p3e781310y2" path="res://scenes/bottom_window.gd" id="10_dinhu"]
-[ext_resource type="Texture2D" uid="uid://44er0cvdg5pw" path="res://assets/main room/room_0002_Layer-15.png" id="10_vtaks"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
 font = ExtResource("3_0tnpc")
@@ -21,12 +19,6 @@ size = Vector2(92, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(77, 177)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvpfn"]
-size = Vector2(121, 25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
-size = Vector2(97, 50)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hve3p"]
 radius = 26.6667
@@ -67,23 +59,11 @@ debug_color = Color(0.94902, 0, 0, 0.356863)
 
 [node name="Window" parent="." instance=ExtResource("5_vef74")]
 position = Vector2(16, -240)
+typeOfWindow = "Top Window"
 
-[node name="BottomWindow" type="StaticBody2D" parent="."]
-position = Vector2(2, 283)
-script = ExtResource("10_dinhu")
-
-[node name="BottomWindow2" type="Sprite2D" parent="BottomWindow"]
-texture = ExtResource("10_vtaks")
-
-[node name="BottomWindowCollision" type="CollisionShape2D" parent="BottomWindow"]
-position = Vector2(0, -24)
-shape = SubResource("RectangleShape2D_kvpfn")
-
-[node name="interactable" parent="BottomWindow" instance=ExtResource("7_u5sy4")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWindow/interactable"]
-shape = SubResource("RectangleShape2D_dinhu")
-debug_color = Color(1, 0, 0.0941176, 0.419608)
+[node name="BottomWindow" parent="." instance=ExtResource("5_vef74")]
+position = Vector2(8, 226)
+typeOfWindow = "Bottom Window"
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(336, 0)
@@ -94,6 +74,7 @@ position = Vector2(1.90735e-06, 7.62939e-06)
 scale = Vector2(2.68182, 2.68182)
 texture = ExtResource("5_kvpfn")
 hframes = 2
+vframes = 3
 region_rect = Rect2(0, 0, 50, 55)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]

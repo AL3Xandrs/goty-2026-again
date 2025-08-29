@@ -43,6 +43,8 @@ icon = ExtResource("3_l3tiw")
 flat = true
 
 [connection signal="gui_input" from="Buttons/SlotsButton" to="." method="_onClickSlots"]
+[connection signal="mouse_entered" from="Buttons/SlotsButton" to="." method="_onMouseHover"]
+[connection signal="mouse_exited" from="Buttons/SlotsButton" to="." method="_onMouseUnhover"]
 [connection signal="gui_input" from="Buttons/BlackjackButton" to="." method="_onClickBlackjack"]
 [connection signal="mouse_entered" from="Buttons/BlackjackButton" to="." method="_onHoverBlackjack"]
 [connection signal="mouse_exited" from="Buttons/BlackjackButton" to="." method="_onUnhoverBlackjack"]

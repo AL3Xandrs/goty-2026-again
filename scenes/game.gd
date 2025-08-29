@@ -10,9 +10,10 @@ extends Node2D
 
 const LEVEL_2_THRESHOLD: int = 500
 const LEVEL_3_THRESHOLD: int = 2000
+const FINISH_THRESHOLD: int = 10000
 
 var money: int = 0 : set = setMoney
-var level: int = 1
+var level: int = 2
 
 var time:float = 0
 var botherInterval :float = 10
@@ -20,7 +21,7 @@ var botherInterval :float = 10
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
-	money=499
+	money=100
 	
 
 func _process(delta: float) -> void:
@@ -43,11 +44,14 @@ func setMoney(value):
 	fancyMoner.tween_method(Callable.create(self, "_updateLabel"), money, value, 0.5)
 	money = value
 	
-	if money > LEVEL_3_THRESHOLD and level != 3:
+	if money > FINISH_THRESHOLD:
+		level = 4
+		computer.updateLevel()
+	elif money > LEVEL_3_THRESHOLD and level < 3:
 		print("moving to level 3")
 		level = 3
 		computer.updateLevel()
-	elif money > LEVEL_2_THRESHOLD and level != 2:
+	elif money > LEVEL_2_THRESHOLD and level < 2:
 		print("moving to level 2")
 		level = 2
 		computer.updateLevel()

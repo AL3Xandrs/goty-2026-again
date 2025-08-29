@@ -74,6 +74,7 @@ func endGame():
 		makeEndScreen("draw")
 	if gameNode.money <= 75:
 		pity = 4
+
 	startBet()
 
 func rollDice() -> int:

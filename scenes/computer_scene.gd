@@ -3,6 +3,7 @@ extends Node2D
 @onready var blackjack = load("res://blackjack/black_jack_scene.tscn")
 @onready var dice = load("res://barbut/barbut_scene.tscn")
 @onready var gameNode = $".."
+
 @onready var playerNode = $"../../Player"
 
 @onready var buttonsNode = $"./Buttons"

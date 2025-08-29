@@ -10,6 +10,14 @@ extends Node2D
 
 @onready var diceScene = load("res://barbut/dice_scene.tscn")
 @onready var gameNode = get_tree().get_root().get_node("./main/game")
+
+@onready var endScreens := $"./EndingScreens"
+@onready var victoryScreen := $"./EndingScreens/Victory"
+@onready var defeatScreen := $"./EndingScreens/Lose"
+@onready var drawScreen := $"./EndingScreens/Draw"
+
+@onready var infoYap := $"./InfoButton/InfoYap"
+
 var bet: int
 
 var pity:int = 0
@@ -55,11 +63,15 @@ func endGame():
 	var playerScore:int = playerDice[0] + playerDice[1]
 	var enemyScore:int = enemyDice[0] + enemyDice[1]
 	if playerScore > enemyScore:
+		makeEndScreen("victory")
 		gameNode.money += bet
 		pity = clamp(pity-1, 1, 10)
 	elif playerScore < enemyScore:
+		makeEndScreen("defeat")
 		gameNode.money -= bet
 		pity = clamp(pity+1, 1, 10)
+	else:
+		makeEndScreen("draw")
 	startBet()
 
 func rollDice() -> int:
@@ -98,3 +110,34 @@ func _onBetButtonClick(event: InputEvent) -> void:
 
 func _onBetSliderChanged(value: int) -> void:
 	betLabel.text = "Bet: $" + str(int(betSlider.value))
+
+
+
+func makeEndScreen(screenType: String):
+	endScreens.position = position + Vector2(0, -200)
+	endScreens.modulate.a = 0
+	
+	if screenType == "victory": victoryScreen.show()
+	elif screenType == "defeat": defeatScreen.show()
+	elif screenType == "draw": drawScreen.show()
+	
+	var mover = create_tween()
+	var fader = create_tween()
+	
+	mover.tween_property(self, "endScreens:position", Vector2(0,-100), 0.5).set_ease(Tween.EASE_IN)
+	fader.tween_property(self, "endScreens:modulate:a", 1, 0.5)
+	await fader.finished
+	await get_tree().create_timer(0.3, false).timeout
+	
+	var fader2 = create_tween()
+	fader2.tween_property(self, "endScreens:modulate:a", 0, 0.5)
+	await fader2.finished
+	victoryScreen.hide(); drawScreen.hide(); defeatScreen.hide()
+
+
+func _onHoverInfo() -> void:
+	infoYap.show()
+
+
+func _onUnhoverInfo() -> void:
+	infoYap.hide()

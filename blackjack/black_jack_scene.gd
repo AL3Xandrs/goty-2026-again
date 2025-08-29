@@ -10,6 +10,7 @@ var currentTurn: int = 3
 @onready var buttonsNode = $"./buttons"
 @onready var cardScene = load("res://scenes/card_scene.tscn")
 @onready var players: Array = [playerNode, dealerNode]
+@onready var endScreens := $"./endingScreens"
 @onready var victoryScreen := $"./endingScreens/VictoryScreen"
 @onready var defeatScreen := $"./endingScreens/DefeatScreen"
 @onready var drawScreen := $"./endingScreens/DrawScreen"
@@ -18,6 +19,7 @@ var currentTurn: int = 3
 @onready var betLabel := $"./Bet/BetLabel"
 @onready var betButton := $"./Bet/BetButton"
 @onready var gameNode = get_tree().get_root().get_node("./main/game")
+@onready var infoYap = $"./InfoButton/InfoYap"
 
 var betAmount:int = 0
 
@@ -73,20 +75,20 @@ func endGame():
 	if (playerNode.getScore() > dealerNode.getScore() and !playerNode.isBusted()) or dealerNode.isBusted():
 		print("Player won yippie")
 		gameNode.money += betAmount
-		victoryScreen.show()
+		makeEndScreen("victory")
 		await get_tree().create_timer(1.5, false).timeout
-		victoryScreen.hide()
+		
 	elif playerNode.getScore() < dealerNode.getScore() or playerNode.isBusted():
 		print("Dealer won rigged")
 		gameNode.money -= betAmount
-		defeatScreen.show()
+		makeEndScreen("defeat")
 		await get_tree().create_timer(1.5, false).timeout
-		defeatScreen.hide()
+		
 	else:
 		print("wow its a draw :i")
-		drawScreen.show()
+		makeEndScreen("draw")
 		await get_tree().create_timer(1.5, false).timeout
-		drawScreen.hide()
+		
 
 func startGame():
 	buttonsNode.hide()
@@ -118,3 +120,32 @@ func _onPressBet(event: InputEvent) -> void:
 
 func _onBetSliderSlide(value: float) -> void:
 	betLabel.text = "Bet: $" + str(int(betSlider.value))
+
+func makeEndScreen(screenType: String):
+	endScreens.position = position + Vector2(0, -100)
+	endScreens.modulate.a = 0
+	
+	if screenType == "victory": victoryScreen.show()
+	elif screenType == "defeat": defeatScreen.show()
+	elif screenType == "draw": drawScreen.show()
+	
+	var mover = create_tween()
+	var fader = create_tween()
+	
+	mover.tween_property(self, "endScreens:position", Vector2(0,0), 0.5).set_ease(Tween.EASE_IN)
+	fader.tween_property(self, "endScreens:modulate:a", 1, 0.5)
+	await fader.finished
+	await get_tree().create_timer(0.3, false).timeout
+	
+	var fader2 = create_tween()
+	fader2.tween_property(self, "endScreens:modulate:a", 0, 0.5)
+	await fader2.finished
+	victoryScreen.hide(); drawScreen.hide(); defeatScreen.hide()
+
+
+func _onInfoHover() -> void:
+	infoYap.show()
+
+
+func _onMouseUnhover() -> void:
+	infoYap.hide()

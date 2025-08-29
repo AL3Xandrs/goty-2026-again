@@ -1,15 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://244epntu5xut"]
+[gd_scene load_steps=15 format=3 uid="uid://244epntu5xut"]
 
 [ext_resource type="Script" uid="uid://jn5jygpasee7" path="res://blackjack/black_jack_scene.gd" id="1_sr83v"]
 [ext_resource type="Script" uid="uid://br0ek7mj0nydw" path="res://blackjack/player_hand.gd" id="2_a0x6j"]
 [ext_resource type="Script" uid="uid://6b21vsjnamps" path="res://blackjack/dealer_hand.gd" id="2_kegn5"]
 [ext_resource type="Texture2D" uid="uid://c0s7tlcgsogvq" path="res://assets/pc thing/pc_all_but_buttons.png" id="2_nvggx"]
-[ext_resource type="Texture2D" uid="uid://c6ot3kh7widfo" path="res://assets/icon.svg" id="3_kegn5"]
 [ext_resource type="Texture2D" uid="uid://d06gtqqit3dfe" path="res://assets/pc thing/pc_0001_hit_button.png" id="5_ri8c0"]
 [ext_resource type="Texture2D" uid="uid://byx6b1gnwcfdc" path="res://assets/pc thing/pc_0000_stand_button.png" id="6_7xgea"]
 [ext_resource type="Texture2D" uid="uid://crt231os23ini" path="res://assets/cards/card stack.png" id="6_tdvw6"]
+[ext_resource type="Texture2D" uid="uid://bhqmokgetxtf8" path="res://assets/VICTORY.png" id="8_7xgea"]
+[ext_resource type="Texture2D" uid="uid://drwger6s5yeuj" path="res://assets/LOSE.png" id="9_h8uvn"]
+[ext_resource type="Texture2D" uid="uid://kpxd0x6psrc8" path="res://assets/DRAW.png" id="10_0yfbg"]
+[ext_resource type="Texture2D" uid="uid://b8xiowsfgeiqc" path="res://assets/infoButton.png" id="11_h8uvn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x4jgr"]
+font_size = 32
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0yfbg"]
+radius = 32.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_0yfbg"]
+font_size = 31
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="blackJackScene" type="Node2D"]
 script = ExtResource("1_sr83v")
@@ -64,23 +76,24 @@ texture = ExtResource("6_tdvw6")
 
 [node name="endingScreens" type="Node2D" parent="."]
 z_index = 310
-position = Vector2(-32, 40)
+position = Vector2(0, 24)
 
 [node name="VictoryScreen" type="Sprite2D" parent="endingScreens"]
 visible = false
 z_index = 4096
-scale = Vector2(3.0625, 1)
-texture = ExtResource("3_kegn5")
+scale = Vector2(1.71212, 1.71212)
+texture = ExtResource("8_7xgea")
 
 [node name="DefeatScreen" type="Sprite2D" parent="endingScreens"]
 visible = false
-scale = Vector2(0.5, 1)
-texture = ExtResource("3_kegn5")
+position = Vector2(7.62939e-06, 3.8147e-06)
+scale = Vector2(1.38889, 1.38889)
+texture = ExtResource("9_h8uvn")
 
 [node name="DrawScreen" type="Sprite2D" parent="endingScreens"]
 visible = false
-scale = Vector2(1, 0.3125)
-texture = ExtResource("3_kegn5")
+scale = Vector2(1.30808, 1.30808)
+texture = ExtResource("10_0yfbg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -99,9 +112,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BetLabel" type="Label" parent="Bet"]
 z_index = 303
-offset_left = -40.0
-offset_top = -80.0
-offset_bottom = -48.0
+offset_left = -48.0
+offset_top = -16.0
+offset_right = -8.0
+offset_bottom = 16.0
 text = "bet"
 label_settings = SubResource("LabelSettings_x4jgr")
 metadata/_edit_use_anchors_ = true
@@ -117,7 +131,46 @@ flat = true
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
+[node name="InfoButton" type="Area2D" parent="."]
+z_index = 325
+position = Vector2(-424, -144)
+
+[node name="InfoSprite" type="Sprite2D" parent="InfoButton"]
+z_index = 315
+position = Vector2(0, 7.62939e-06)
+scale = Vector2(2.125, 2.125)
+texture = ExtResource("11_h8uvn")
+
+[node name="InfoShape" type="CollisionShape2D" parent="InfoButton"]
+z_index = 390
+shape = SubResource("CircleShape2D_0yfbg")
+debug_color = Color(0.821755, 0.152326, 0.89675, 0.42)
+
+[node name="InfoYap" type="Label" parent="InfoButton"]
+visible = false
+z_index = 730
+offset_left = 48.0
+offset_top = -64.0
+offset_right = 1739.0
+offset_bottom = 583.0
+text = "Hit = draw a card
+Stand = end your turn
+You want to get as close to 21 score
+as possible without going over
+
+Number cards  give the score written on them
+Face cards (J, Q, K) are worth 10
+Ace (A) is worth either 1 or 11, depending
+on what would fit best in your hand
+(ex: if you have a 10 and an A its worth 11 because
+it fits; if you have a 10, an 8 and an A, the A is worth 1
+because an 11 wouldn't fit)
+"
+label_settings = SubResource("LabelSettings_0yfbg")
+
 [connection signal="gui_input" from="buttons/hitButton" to="." method="_onClickHit"]
 [connection signal="gui_input" from="buttons/standButton" to="." method="_onClickStand"]
 [connection signal="value_changed" from="Bet/BetSlider" to="." method="_onBetSliderSlide"]
 [connection signal="gui_input" from="Bet/BetButton" to="." method="_onPressBet"]
+[connection signal="mouse_entered" from="InfoButton" to="." method="_onInfoHover"]
+[connection signal="mouse_exited" from="InfoButton" to="." method="_onMouseUnhover"]

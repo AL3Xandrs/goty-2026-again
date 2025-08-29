@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpfqxxrf8ksro"]
+[gd_scene load_steps=14 format=3 uid="uid://cpfqxxrf8ksro"]
 
 [ext_resource type="Script" uid="uid://dbu0anegsqv7a" path="res://scenes/game.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://c3hj4cg8v4oo" path="res://assets/main room/rug.png" id="2_p57ef"]
 [ext_resource type="Script" uid="uid://dieatucxcca37" path="res://scripts/movement.gd" id="2_ryrav"]
+[ext_resource type="FontFile" uid="uid://crnyr53f41dyj" path="res://assets/Tiny5-Regular.ttf" id="3_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://c6ot3kh7widfo" path="res://assets/icon.svg" id="3_eow3j"]
 [ext_resource type="PackedScene" uid="uid://d0dac7pylsiwn" path="res://interaction/interacting_component.tscn" id="4_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://ync7sqlq1n1f" path="res://interaction/window.tscn" id="5_vef74"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cv8r3j7jx2j14" path="res://interaction/interactable.tscn" id="7_u5sy4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
+font = ExtResource("3_0tnpc")
 font_size = 91
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hve3p"]
@@ -30,10 +32,10 @@ texture = ExtResource("2_p57ef")
 
 [node name="MoneyLabel" type="Label" parent="."]
 z_index = 4096
-offset_left = 192.0
-offset_top = -328.0
-offset_right = 552.0
-offset_bottom = -203.0
+offset_left = 200.0
+offset_top = -312.0
+offset_right = 560.0
+offset_bottom = -187.0
 label_settings = SubResource("LabelSettings_u5sy4")
 horizontal_alignment = 2
 

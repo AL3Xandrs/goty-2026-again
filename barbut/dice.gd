@@ -15,7 +15,7 @@ func _ready() -> void:
 	position = source
 	scale = Vector2(2, 2)
 	velocity = (target - source).normalized().rotated(deg_to_rad(randi_range(-20, 20))) * randi_range(speed-250, speed+250)
-
+	doFunnyRoll()
 
 func _physics_process(delta: float) -> void:
 	if velocity.length() > 5:
@@ -23,10 +23,6 @@ func _physics_process(delta: float) -> void:
 		if collision: 
 			velocity = velocity.bounce(collision.get_normal())
 		velocity *= friction
-		if !isStopped:
-			diceSprite.region_rect.position = Vector2(randi_range(0,5)*64, 0)
-		if isStopped:
-			diceSprite.region_rect.position = Vector2((value-1)*64, 0)
 		if velocity.length() < 100:
 			isStopped = 1
 
@@ -36,3 +32,9 @@ func clearDie():
 	fader.tween_property(self, "modulate:a", 0, 0.5)
 	await fader.finished
 	queue_free()
+
+func doFunnyRoll():
+	for i in range(10):
+		diceSprite.region_rect.position = Vector2(randi_range(0,5)*64, 0)
+		await get_tree().create_timer(0.08, false).timeout
+	diceSprite.region_rect.position = Vector2((value-1)*64, 0)

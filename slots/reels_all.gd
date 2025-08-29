@@ -5,7 +5,7 @@ extends Node2D
 var is_spinning = false
 var final_symbols := []
 var money :int
-var current_bet :int
+var current_bet :int = 10
 
 var weights_default = {
 	"7":4,
@@ -28,6 +28,19 @@ var multiplier_table = {
 	"lemon":[0,0,0,2,4,20],
 	"cherry":[0,0,0,1,3,15],
 	}
+
+var patterns = [
+	[0,0,0,0,0],
+	[1,1,1,1,1],
+	[2,2,2,2,2],
+	[0,1,2,1,0],
+	[2,1,0,1,2],
+	[0,0,1,2,2],
+	[2,2,1,0,0],
+	[1,0,0,0,1],
+	[1,2,2,2,1],
+	[0,1,1,1,0],
+]
 
 func _ready() -> void:
 	randomize()
@@ -104,15 +117,24 @@ func play():
 	if !is_spinning:
 		is_spinning = true
 		final_symbols = calc_tablou()
+		money -= current_bet
+		money += score()
 		for r in range(5):
 			reels[r].spin(final_symbols[r])
 		await get_tree().create_timer(4,false).timeout
 		is_spinning = false
 
-func top_line():
-	var first = final_symbols[0][0]
-	var count = 0 
-	var i=1
-	while final_symbols[1][i] == first and i<5:
-		count+=1
+func score():
+	var first:String
+	var count:int
+	var sum := 0
 	
+	for i in range(patterns.size()):
+		first = final_symbols[0][patterns[i][0]]
+		count = 1
+		var j := 1
+		while j<5 and final_symbols[j][patterns[i][j]] == first:
+			count+=1
+			j+=1
+		sum+= ( current_bet * multiplier_table[first][count] )
+	return sum

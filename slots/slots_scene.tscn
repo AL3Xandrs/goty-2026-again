@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c24jfjd0taw1n" path="res://assets/slots/retry_button.png" id="2_2uqeg"]
 [ext_resource type="Texture2D" uid="uid://cs1s1pk4uyrsp" path="res://assets/slots/slots_layer_0.png" id="3_c1lnn"]
 [ext_resource type="Script" uid="uid://r5v3fvce4hl" path="res://slots/reels_all.gd" id="3_vg3qo"]
-[ext_resource type="PackedScene" uid="uid://do7dolks675cv" path="res://slots/reel.tscn" id="4_0x2x2"]
+[ext_resource type="PackedScene" path="res://slots/reel.tscn" id="4_0x2x2"]
 [ext_resource type="Texture2D" uid="uid://c2edi3dt5mnk4" path="res://assets/slots/slots_layer_1.png" id="4_hddjk"]
-
 
 [node name="slots_scene" type="Node2D"]
 

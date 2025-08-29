@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ync7sqlq1n1f"]
+[gd_scene load_steps=14 format=3 uid="uid://ync7sqlq1n1f"]
 
 [ext_resource type="Script" uid="uid://8qgtd5xjbprb" path="res://interaction/window.gd" id="1_xjadj"]
 [ext_resource type="Texture2D" uid="uid://b8cpmvwl88wuu" path="res://assets/main room/room_0003_Layer-14.png" id="2_jt2s0"]
@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://bscdebg2eskrn" path="res://assets/sounds/WIndow1.wav" id="5_246na"]
 [ext_resource type="Texture2D" uid="uid://ds772kcdp7wj6" path="res://assets/main room/downwindow2.png" id="5_tarxg"]
 [ext_resource type="AudioStream" uid="uid://cts7vu6iyo70j" path="res://assets/sounds/Window2.wav" id="6_hueh5"]
+[ext_resource type="Texture2D" uid="uid://bfri7ajheyka4" path="res://assets/main room/upwindowbreak.png" id="9_nqh1v"]
+[ext_resource type="Texture2D" uid="uid://k885ada1x256" path="res://assets/main room/downwindowbreak.png" id="10_swnfv"]
+[ext_resource type="Texture2D" uid="uid://dsmvgikbwvqmg" path="res://assets/main room/lordoflandfall.png" id="11_swnfv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_246na"]
 size = Vector2(160, 42)
@@ -59,3 +62,18 @@ max_polyphony = 2
 
 [node name="KnockingSoundTop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_hueh5")
+
+[node name="TopWindowBreak" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("9_nqh1v")
+
+[node name="BottomWindowBreak" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-8, 56)
+texture = ExtResource("10_swnfv")
+
+[node name="Lordoflandfall" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(3.34091, 3.34091)
+texture = ExtResource("11_swnfv")
+vframes = 2

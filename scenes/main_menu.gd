@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var mainNode = get_tree().get_root().get_node("main")
 @onready var background : TextureRect= $"./Background"
+@onready var playButton:= $"./Background/PlayButton"
 var isInAnimation: bool = 0
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -37,3 +38,11 @@ func hideMenu():
 		await glider.finished
 		background.visible = false
 		isInAnimation=0
+
+
+func _onHoverPlay() -> void:
+	playButton.scale = Vector2(1.3, 1.3)
+
+
+func _onUnhoverPlay() -> void:
+	playButton.scale = Vector2(1, 1)

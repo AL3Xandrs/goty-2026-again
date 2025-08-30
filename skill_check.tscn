@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhrau3165nrbj"]
+
+[ext_resource type="Script" uid="uid://nchkf1rumh27" path="res://SkillCheck.gd" id="1_f5rkp"]
+[ext_resource type="Texture2D" uid="uid://c6ot3kh7widfo" path="res://assets/icon.svg" id="2_u2p1f"]
+
+[node name="SkillCheck" type="Node2D"]
+script = ExtResource("1_f5rkp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(4.35938, 0.875)
+texture = ExtResource("2_u2p1f")
+
+[node name="Mover" type="Sprite2D" parent="."]
+scale = Vector2(0.132813, 1.0625)
+texture = ExtResource("2_u2p1f")

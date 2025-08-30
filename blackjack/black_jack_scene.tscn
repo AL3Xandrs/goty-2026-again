@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://244epntu5xut"]
+[gd_scene load_steps=16 format=3 uid="uid://244epntu5xut"]
 
 [ext_resource type="Script" uid="uid://jn5jygpasee7" path="res://blackjack/black_jack_scene.gd" id="1_sr83v"]
 [ext_resource type="Script" uid="uid://br0ek7mj0nydw" path="res://blackjack/player_hand.gd" id="2_a0x6j"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://drwger6s5yeuj" path="res://assets/LOSE.png" id="9_h8uvn"]
 [ext_resource type="Texture2D" uid="uid://kpxd0x6psrc8" path="res://assets/DRAW.png" id="10_0yfbg"]
 [ext_resource type="Texture2D" uid="uid://b8xiowsfgeiqc" path="res://assets/infoButton.png" id="11_h8uvn"]
+[ext_resource type="AudioStream" uid="uid://ccxm7k7xvauhu" path="res://assets/sounds/blackjack_draw_card.mp3" id="12_0yfbg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x4jgr"]
 font_size = 32
@@ -167,6 +168,20 @@ it fits; if you have a 10, an 8 and an A, the A is worth 1
 because an 11 wouldn't fit)
 "
 label_settings = SubResource("LabelSettings_0yfbg")
+
+[node name="ColorRect" type="ColorRect" parent="InfoButton/InfoYap"]
+z_index = -1
+layout_mode = 0
+offset_left = -8.0
+offset_right = 728.0
+offset_bottom = 472.0
+color = Color(0, 0, 0, 0.839216)
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="card_draw" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("12_0yfbg")
+volume_db = -10.0
 
 [connection signal="gui_input" from="buttons/hitButton" to="." method="_onClickHit"]
 [connection signal="gui_input" from="buttons/standButton" to="." method="_onClickStand"]

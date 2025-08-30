@@ -15,7 +15,7 @@ const LEVEL_3_THRESHOLD: int = 2000
 const FINISH_THRESHOLD: int = 10000
 
 var money: int = 0 : set = setMoney
-var level: int = 3
+var level: int = 2
 
 
 var time:float = 0
@@ -24,7 +24,7 @@ var isFirstBother: bool = 1
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
-	money=499
+	money=1000
 	
 
 func _process(delta: float) -> void:

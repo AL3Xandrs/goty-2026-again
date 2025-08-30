@@ -1,12 +1,18 @@
+class_name MainMenuClass
 extends Node2D
 
 
 @onready var mainNode = get_tree().get_root().get_node("main")
+@onready var gameNode = $"../game"
 @onready var background : TextureRect= $"./Background"
 @onready var playButton:= $"./Background/PlayButton"
+@onready var resetButton:=$"Background/ResetButton"
+
 var isInAnimation: bool = 0
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	resetButton.hide()
 
 
 func _process(delta: float) -> void:
@@ -19,6 +25,8 @@ func _onClickPlay(event: InputEvent) -> void:
 
 func showMenu():
 	if !isInAnimation:
+		if gameNode.gameStarted:
+			resetButton.show()
 		isInAnimation = 1
 		background.visible = true
 		var fader = create_tween()
@@ -46,3 +54,9 @@ func _onHoverPlay() -> void:
 
 func _onUnhoverPlay() -> void:
 	playButton.scale = Vector2(1, 1)
+
+
+func _onPressReset(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		if !isInAnimation:
+			mainNode.endRun("Reset")

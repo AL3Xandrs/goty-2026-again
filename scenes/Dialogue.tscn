@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmocr57dhhsd3"]
+[gd_scene load_steps=9 format=3 uid="uid://cmocr57dhhsd3"]
 
 [ext_resource type="Script" uid="uid://b20fnpl0tyqxr" path="res://scripts/dialogue.gd" id="1_cfanh"]
 [ext_resource type="Texture2D" uid="uid://cwuorg3iibd1q" path="res://assets/headlordofland.png" id="2_7f5y4"]
 [ext_resource type="Texture2D" uid="uid://8u5vmgt6pctd" path="res://assets/headu.png" id="3_326pc"]
 [ext_resource type="Texture2D" uid="uid://b5ur45xobitq5" path="res://assets/SpeechBubble.png" id="4_3l7pr"]
-[ext_resource type="Texture2D" uid="uid://c6ot3kh7widfo" path="res://assets/icon.svg" id="5_7f5y4"]
+[ext_resource type="Texture2D" uid="uid://ke0373ffux3m" path="res://assets/blackjack buttons/continue_button.png" id="5_326pc"]
+[ext_resource type="Texture2D" uid="uid://bqvq0aqs7spbu" path="res://assets/blackjack buttons/pay_rent_button.png" id="6_3l7pr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ryofh"]
 font_size = 41
@@ -65,19 +66,21 @@ position = Vector2(0, 32)
 
 [node name="ContinueButton" type="Button" parent="Buttons"]
 offset_left = -216.0
-offset_top = -72.0
-offset_right = -80.0
-offset_bottom = 64.0
-icon = ExtResource("5_7f5y4")
+offset_top = -56.0
+offset_right = -16.0
+offset_bottom = 40.0
+icon = ExtResource("5_326pc")
 flat = true
+expand_icon = true
 
 [node name="EndButton" type="Button" parent="Buttons"]
-offset_left = 56.0
-offset_top = -72.0
-offset_right = 192.0
-offset_bottom = 64.0
-icon = ExtResource("5_7f5y4")
+offset_left = 16.0
+offset_top = -56.0
+offset_right = 216.0
+offset_bottom = 40.0
+icon = ExtResource("6_3l7pr")
 flat = true
+expand_icon = true
 
 [connection signal="gui_input" from="Buttons/ContinueButton" to="." method="_onPressContinue"]
 [connection signal="gui_input" from="Buttons/EndButton" to="." method="_onPressStop"]

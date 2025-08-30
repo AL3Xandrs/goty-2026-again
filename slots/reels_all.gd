@@ -1,7 +1,13 @@
 extends Node2D
 
-@export var bias_mult := 1
+@export var bias_mult := 0.5
 @onready var reels = [$reel1, $reel2, $reel3, $reel4, $reel5]
+@onready var win_sound: AudioStreamPlayer2D = $Audio/win
+@onready var play_sound: AudioStreamPlayer2D = $Audio/play
+@onready var spinning_sound: AudioStreamPlayer2D = $Audio/spinning
+@onready var current_bet_label: Label = $"../UI_and_buttons/current_bet"
+@onready var last_win_label: Label = $"../UI_and_buttons/last_win"
+
 var is_spinning = false
 var final_symbols := []
 # var money :int
@@ -54,27 +60,35 @@ func _process(delta: float) -> void:
 
 func _on_play_button_pressed() -> void:
 	play()
+	play_sound.play()
 
 func _on_bet_1_pressed() -> void:
 	current_bet = 10
+	current_bet_label.text = "Current Bet:\n" + str(current_bet)
 
 func _on_bet_2_pressed() -> void:
 	current_bet = 25
+	current_bet_label.text = "Current Bet:\n" + str(current_bet)
 
 func _on_bet_3_pressed() -> void:
 	current_bet = 50
+	current_bet_label.text = "Current Bet:\n" + str(current_bet)
 
 func _on_bet_4_pressed() -> void:
 	current_bet = 75
+	current_bet_label.text = "Current Bet:\n" + str(current_bet)
 
 func _on_bet_5_pressed() -> void:
 	current_bet = 100
+	current_bet_label.text = "Current Bet:\n" + str(current_bet)
 
 func _on_bet_6_pressed() -> void:
 	current_bet = 150
+	current_bet_label.text = "Current Bet:\n" + str(current_bet)
 
 func _on_bet_7_pressed() -> void:
 	current_bet = 200
+	current_bet_label.text = "Current Bet:\n" + str(current_bet)
 
 func pick_symbol(weights:Dictionary):
 	var total_weight = 0
@@ -118,6 +132,7 @@ func calc_tablou():
 func play():
 	if !is_spinning and current_bet <= gameNode.money:
 		is_spinning = true
+		spinning_sound.play()
 		final_symbols = calc_tablou()
 		var currentScore = score()
 		gameNode.money -= current_bet
@@ -125,6 +140,10 @@ func play():
 			reels[r].spin(final_symbols[r])
 		await get_tree().create_timer(4,false).timeout
 		is_spinning = false
+		spinning_sound.stop()
+		if currentScore > 0:
+			win_sound.play()
+			last_win_label.text = "Last Win:\n" + str(currentScore)
 		gameNode.money += currentScore
 
 func score():

@@ -2,8 +2,10 @@ class_name Dice
 extends CharacterBody2D
 
 var value: int
-var source: Vector2
-var target: Vector2
+var source:Vector2
+var target:Vector2
+
+var draggedThrowVelocity:Vector2
 
 var speed: float = 1000
 var friction: float = 0.95
@@ -12,9 +14,22 @@ var isStopped: bool = 0
 @onready var hitbox:= $"./CollisionShape2D"
 
 func _ready() -> void:
-	position = source
 	scale = Vector2(2, 2)
+	if source != Vector2(0, 0):
+		initiateThrow()
+
+func initiateThrow():
+	position = source
 	velocity = (target - source).normalized().rotated(deg_to_rad(randi_range(-20, 20))) * randi_range(speed-250, speed+250)
+	doFunnyRoll()
+	await get_tree().create_timer(0.1, false).timeout
+	hitbox.disabled = false
+
+func initiateDraggedThrow():
+	velocity = draggedThrowVelocity.rotated(deg_to_rad(randi_range(-20, 20)))
+	velocity *= randf_range(0.9, 1.1)
+	await get_tree().create_timer(0.1, false).timeout
+	hitbox.disabled = false
 	doFunnyRoll()
 
 func _physics_process(delta: float) -> void:

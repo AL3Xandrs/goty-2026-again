@@ -13,10 +13,10 @@
 font_size = 32
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6btyb"]
-size = Vector2(1004, 22.9294)
+size = Vector2(1004, 99.4647)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oatmx"]
-size = Vector2(1016, 74)
+size = Vector2(1164, 117)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gnbn5"]
 radius = 24.0
@@ -65,7 +65,7 @@ label_settings = SubResource("LabelSettings_1s0nb")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="PlayerOrigin" type="Node2D" parent="."]
-position = Vector2(320, 306)
+position = Vector2(200, 168)
 
 [node name="EnemyOrigin" type="Node2D" parent="."]
 position = Vector2(-235, -235)
@@ -75,22 +75,50 @@ z_index = 400
 texture = ExtResource("3_6btyb")
 
 [node name="DiceBounds" type="CharacterBody2D" parent="."]
+visible = false
 position = Vector2(640, 0)
 collision_layer = 2
 collision_mask = 2
 
 [node name="EnemyBound" type="CollisionShape2D" parent="DiceBounds"]
-position = Vector2(-824, -149)
-rotation = 2.87978
+position = Vector2(-328, 256)
+rotation = -0.261799
 shape = SubResource("RectangleShape2D_6btyb")
-one_way_collision = true
-one_way_collision_margin = 2.3
+one_way_collision_margin = 8.0
 
 [node name="PlayerBound" type="CollisionShape2D" parent="DiceBounds"]
-position = Vector2(-376, 288)
-rotation = 6.02138
+position = Vector2(-448, -216)
+rotation = 3.66519
+shape = SubResource("RectangleShape2D_oatmx")
+one_way_collision_margin = 7.8
+
+[node name="EnemyBound2" type="CollisionShape2D" parent="DiceBounds"]
+position = Vector2(-1032, 144)
+rotation = 0.523598
+shape = SubResource("RectangleShape2D_6btyb")
+one_way_collision_margin = 8.0
+
+[node name="PlayerBound2" type="CollisionShape2D" parent="DiceBounds"]
+position = Vector2(-904, -168)
+rotation = -3.40339
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_oatmx")
 one_way_collision = true
+one_way_collision_margin = 7.8
+
+[node name="PlayerBound3" type="CollisionShape2D" parent="DiceBounds"]
+position = Vector2(-1112, 32)
+rotation = 1.83259
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_oatmx")
+one_way_collision_margin = 7.8
+
+[node name="PlayerBound4" type="CollisionShape2D" parent="DiceBounds"]
+position = Vector2(-176, 128)
+rotation = -1.309
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_oatmx")
+one_way_collision_margin = 7.8
 
 [node name="EndingScreens" type="Node2D" parent="."]
 z_index = 100

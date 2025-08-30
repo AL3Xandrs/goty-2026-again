@@ -7,6 +7,8 @@ extends Node2D
 @onready var spinning_sound: AudioStreamPlayer2D = $Audio/spinning
 @onready var current_bet_label: Label = $"../UI_and_buttons/current_bet"
 @onready var last_win_label: Label = $"../UI_and_buttons/last_win"
+@onready var particle_left: CPUParticles2D = $"../UI_and_buttons/particle_left"
+@onready var particle_right: CPUParticles2D = $"../UI_and_buttons/particle_right"
 
 var is_spinning = false
 var final_symbols := []
@@ -146,7 +148,8 @@ func play():
 		if currentScore > 0:
 			win_sound.play()
 			last_win_label.text = "Last Win:\n" + str(currentScore)
-		gameNode.money += currentScore
+			gameNode.money += currentScore
+			make_particle()
 
 func score():
 	var first:String
@@ -162,3 +165,10 @@ func score():
 			j+=1
 		sum+= ( current_bet * multiplier_table[first][count] )
 	return sum
+
+func make_particle():
+	particle_left.emitting = true
+	particle_right.emitting = true
+	await get_tree().create_timer(2,false).timeout
+	particle_left.emitting = false
+	particle_right.emitting = false

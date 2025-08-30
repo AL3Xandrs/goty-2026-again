@@ -15,6 +15,7 @@ extends StaticBody2D
 
 @onready var noiseMakerBottom= $KnockingSoundBottom
 @onready var noiseMakerTop= $KnockingSoundTop
+@onready var window_break_sound: AudioStreamPlayer2D = $window_break
 
 @onready var mainNode = get_tree().get_root().get_node("main")
 @onready var gameNode = $".."
@@ -61,6 +62,7 @@ func botherPlayer(bother: int):
 	if !pushed:
 		breakWindow()
 		landlordWindowBreak()
+		window_break_sound.play()
 
 func openWindow():
 	currentWindow.hide()

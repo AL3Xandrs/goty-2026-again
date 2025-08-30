@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://8lvtub6pjt5p"]
+[gd_scene load_steps=17 format=3 uid="uid://8lvtub6pjt5p"]
 
 [ext_resource type="Texture2D" uid="uid://biv4xhabqjpxv" path="res://assets/slots/price_slot_bet.png" id="1_0x2x2"]
 [ext_resource type="Script" uid="uid://bk7yngsh2q3x4" path="res://slots/slots_scene.gd" id="1_vg3qo"]
@@ -11,11 +11,16 @@
 [ext_resource type="Texture2D" uid="uid://bhovvq77onksf" path="res://assets/slots/slots_tutorial.png" id="7_xakdw"]
 [ext_resource type="AudioStream" uid="uid://cy1w7ss64dyuc" path="res://assets/slots/slots_spinning.wav" id="8_c1lnn"]
 [ext_resource type="AudioStream" uid="uid://besircoh74tjq" path="res://assets/slots/slots_win.wav" id="8_vrbe3"]
+[ext_resource type="Texture2D" uid="uid://cq5yx35mvtwmi" path="res://assets/slots/bucks.png" id="8_xakdw"]
 [ext_resource type="AudioStream" uid="uid://bvgde34an8vk0" path="res://assets/slots/slots_play.wav" id="9_n3nn2"]
 [ext_resource type="AudioStream" uid="uid://du44clopyg32" path="res://assets/slots/slots_reel_stopped.wav" id="10_dog7a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_shn1y"]
 radius = 24.0
+
+[sub_resource type="Curve" id="Curve_shn1y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.651685), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="slots_scene" type="Node2D"]
 script = ExtResource("1_vg3qo")
@@ -215,6 +220,48 @@ offset_top = -192.0
 offset_right = 320.0
 offset_bottom = 192.0
 color = Color(0, 0, 0, 0.839216)
+
+[node name="particle_left" type="CPUParticles2D" parent="UI_and_buttons"]
+z_index = 2
+position = Vector2(-704, 0)
+emitting = false
+amount = 16
+texture = ExtResource("8_xakdw")
+lifetime = 1.1
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(0.8, -1)
+spread = 0.0
+gravity = Vector2(440, 980)
+initial_velocity_min = 250.0
+initial_velocity_max = 1000.0
+angular_velocity_min = 30.0
+angular_velocity_max = 45.0
+split_scale = true
+scale_curve_x = null
+scale_curve_y = SubResource("Curve_shn1y")
+
+[node name="particle_right" type="CPUParticles2D" parent="UI_and_buttons"]
+z_index = 2
+position = Vector2(704, 0)
+emitting = false
+amount = 16
+texture = ExtResource("8_xakdw")
+lifetime = 1.1
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(-0.8, -1)
+spread = 0.0
+gravity = Vector2(-440, 980)
+initial_velocity_min = 250.0
+initial_velocity_max = 1000.0
+angular_velocity_min = 30.0
+angular_velocity_max = 45.0
+split_scale = true
+scale_curve_x = null
+scale_curve_y = SubResource("Curve_shn1y")
 
 [node name="reels" type="Node2D" parent="."]
 script = ExtResource("3_vg3qo")

@@ -6,7 +6,9 @@ extends Node2D
 @onready var topWindow := $"./Window"
 @onready var bottomWindow := $"./BottomWindow"
 @onready var door = $"Door"
-@onready var doorSound = $"Door/DoorSound"
+@onready var door_slam_sound: AudioStreamPlayer2D  = $Door/door_slam
+@onready var door_lock_sound: AudioStreamPlayer2D = $Door/door_lock
+@onready var door_knock_sound: AudioStreamPlayer2D = $Door/door_knock
 @onready var dialogue = load("res://scenes/Dialogue.tscn")
 @onready var computer = $"./Computer"
 @onready var mainNode = get_tree().get_root().get_node("main")
@@ -16,9 +18,9 @@ const LEVEL_3_THRESHOLD: int = 2000
 const FINISH_THRESHOLD: int = 10000
 
 var money: int = 0 : set = setMoney
-var level: int = 2
+var level: int = 1
 
-const startingMoney = 9999
+const startingMoney = 100
 
 var gameStarted:bool = 0
 
@@ -32,7 +34,7 @@ func _ready() -> void:
 
 	if !gameStarted:
 		await get_tree().create_timer(1.0, false).timeout
-		doorSound.play()
+		door_knock_sound.play()
 		await get_tree().create_timer(1.0, false).timeout
 		await makeDialogue("Looks like someone's at the door!","Player")
 		door.canInteract = 1
@@ -41,7 +43,9 @@ func startCutscene():
 	await makeDialogue("Hello, tenant! \nIt's that time of the month again!", "Landlord")
 	await makeDialogue("Oh no! \nBut i don't have any money!","Player")
 	await makeDialogue("Not my problem, tenant! \nGive me the money or I'll kick you out","Landlord")
-	await get_tree().create_timer(1.0, false).timeout #TODO: Door slam sound
+	door_slam_sound.play()
+	door_lock_sound.play()
+	await get_tree().create_timer(1.2, false).timeout #TODO: Door slam sound
 	await makeDialogue("You can't just lock me out of my own apartment","Landlord")
 	await makeDialogue("Darn, I only have $100... \nThe rent is $500","Player")
 	await makeDialogue("Oh, I know how to fix this! \nI can make money at my computer!","Player")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ync7sqlq1n1f"]
+[gd_scene load_steps=15 format=3 uid="uid://ync7sqlq1n1f"]
 
 [ext_resource type="Script" uid="uid://8qgtd5xjbprb" path="res://interaction/window.gd" id="1_xjadj"]
 [ext_resource type="Texture2D" uid="uid://b8cpmvwl88wuu" path="res://assets/main room/room_0003_Layer-14.png" id="2_jt2s0"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bfri7ajheyka4" path="res://assets/main room/upwindowbreak.png" id="9_nqh1v"]
 [ext_resource type="Texture2D" uid="uid://k885ada1x256" path="res://assets/main room/downwindowbreak.png" id="10_swnfv"]
 [ext_resource type="Texture2D" uid="uid://dsmvgikbwvqmg" path="res://assets/main room/lordoflandfall.png" id="11_swnfv"]
+[ext_resource type="AudioStream" uid="uid://cj2bwpw62ymjl" path="res://assets/sounds/glass_break.wav" id="12_xw6vh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_246na"]
 size = Vector2(160, 42)
@@ -77,3 +78,7 @@ visible = false
 scale = Vector2(3.34091, 3.34091)
 texture = ExtResource("11_swnfv")
 vframes = 2
+
+[node name="window_break" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_xw6vh")
+volume_db = -10.0

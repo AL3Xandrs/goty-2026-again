@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpfqxxrf8ksro"]
+[gd_scene load_steps=17 format=3 uid="uid://cpfqxxrf8ksro"]
 
 [ext_resource type="Script" uid="uid://dbu0anegsqv7a" path="res://scenes/game.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://c3hj4cg8v4oo" path="res://assets/main room/rug.png" id="2_p57ef"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ync7sqlq1n1f" path="res://interaction/window.tscn" id="5_vef74"]
 [ext_resource type="Script" uid="uid://bx7asx7jsiykw" path="res://scenes/computer.gd" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://cv8r3j7jx2j14" path="res://interaction/interactable.tscn" id="7_u5sy4"]
+[ext_resource type="Script" uid="uid://c6cuqsqfos4k5" path="res://scenes/door.gd" id="10_vtaks"]
+[ext_resource type="AudioStream" uid="uid://c5sgrw2najstu" path="res://assets/sounds/Door1.wav" id="11_kvpfn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
 font = ExtResource("3_0tnpc")
@@ -23,6 +25,10 @@ size = Vector2(77, 177)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hve3p"]
 radius = 26.6667
 height = 88.8889
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvpfn"]
+radius = 24.0
+height = 64.0
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_p57ef")
@@ -85,3 +91,27 @@ shape = SubResource("CapsuleShape2D_hve3p")
 debug_color = Color(0.913045, 9.22185e-05, 0.721106, 0.42)
 
 [node name="InteractingComponent" parent="Player" instance=ExtResource("4_j5wjh")]
+
+[node name="Walls" type="CharacterBody2D" parent="."]
+position = Vector2(672, 0)
+
+[node name="WallsCollision" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(-200, 264)
+build_mode = 1
+polygon = PackedVector2Array(-944, -8, 0, 0, 0, -440, -944, -440)
+
+[node name="Door" type="CharacterBody2D" parent="."]
+position = Vector2(-504, -72)
+script = ExtResource("10_vtaks")
+
+[node name="interactable" parent="Door" instance=ExtResource("7_u5sy4")]
+interact_name = "Open door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/interactable"]
+position = Vector2(-8, -8)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_kvpfn")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="DoorSound" type="AudioStreamPlayer2D" parent="Door"]
+stream = ExtResource("11_kvpfn")

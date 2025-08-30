@@ -20,13 +20,14 @@ func _ready() -> void:
 	
 	
 func _on_interact():
-	if !playerNode.isBusy:
-		print("comp uter")
-		playerNode.isBusy = 1
-		activeScreen.show()
-	else:
-		playerNode.isBusy = 0
-		activeScreen.hide()
+	if gameNode.gameStarted:
+		if !playerNode.isBusy:
+			print("comp uter")
+			playerNode.isBusy = 1
+			activeScreen.show()
+		else:
+			playerNode.isBusy = 0
+			activeScreen.hide()
 
 func updateLevel():
 	print("a")

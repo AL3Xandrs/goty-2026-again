@@ -96,6 +96,7 @@ func drawEnemyDice():
 		diceInstance.value = enemyDice[i]
 		diceInstance.source = enemyOrigin
 		diceInstance.target = position
+		diceInstance.modulate.a = 0.6
 		add_child.call_deferred(diceInstance)
 		await get_tree().create_timer(0.4 * (i+1), false).timeout
 		print("Enemy: " + str(enemyDice))

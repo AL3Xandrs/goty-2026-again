@@ -7,7 +7,7 @@ extends StaticBody2D
 
 var activeScreen
 @onready var computerScreen = load("res://scenes/computer_scene.tscn")
-
+@onready var dialogue = load("res://scenes/Dialogue.tscn")
 func _ready() -> void:
 	interactable.interact = _on_interact
 	

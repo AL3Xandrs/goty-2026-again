@@ -30,7 +30,14 @@ func _process(delta: float) -> void:
 	pass
 
 func endRun(typeOfEnding: String):
+	print(typeOfEnding)
+	get_tree().paused = true
 	for child in get_children():
-		child.queue_free()
+		if child is Game:
+			var fader = create_tween()
+			fader.tween_property(child,"modulate:a", 0, 1.0)
+			await fader.finished
+		if child is not Sprite2D and child is not Camera2D:
+			child.queue_free()
 	# TODO: cool ending screen
 	# reset game and mainMenu ty shi

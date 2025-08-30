@@ -19,4 +19,5 @@ region_rect = Rect2(0, 0, 64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hu7ic")
+disabled = true
 debug_color = Color(0, 0.527211, 0.999288, 0.42)

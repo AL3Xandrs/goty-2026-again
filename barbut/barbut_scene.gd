@@ -10,6 +10,7 @@ extends Node2D
 
 @onready var diceScene = load("res://barbut/dice_scene.tscn")
 @onready var gameNode = get_tree().get_root().get_node("./main/game")
+@onready var grabberScene = load("res://barbut/dice_grabber.tscn")
 
 @onready var endScreens := $"./EndingScreens"
 @onready var victoryScreen := $"./EndingScreens/Victory"
@@ -38,6 +39,8 @@ func startBet():
 	for child in get_children():
 		if child is Dice:
 			child.clearDie()
+		elif child is Grabber:
+			child.clearGrabber()
 	betNode.show()
 	betSlider.max_value = gameNode.money
 	#betSlider.value = int (money/2) # ts lowk a bad idea
@@ -53,7 +56,7 @@ func startGame():
 	enemyDice.append(rollDice())
 	enemyDice.append(rollDice())
 	
-	await drawEnemyDice()
+	drawEnemyDice()
 	await drawPlayerDice()
 	
 	endGame()
@@ -97,15 +100,11 @@ func drawEnemyDice():
 		print("Enemy: " + str(enemyDice))
 
 func drawPlayerDice():
-	for i in range(2):
-		var diceInstance: Dice= diceScene.instantiate()
-		diceInstance.value = playerDice[i]
-		diceInstance.source = playerOrigin
-		diceInstance.target = position
-		add_child.call_deferred(diceInstance)
-		await get_tree().create_timer(0.4, false).timeout
-		print("Player: " + str(playerDice))
-		
+	var grabberInstance = grabberScene.instantiate()
+	grabberInstance.position = playerOrigin
+	grabberInstance.dice1Value = playerDice[0]; grabberInstance.dice2Value = playerDice[1]
+	add_child.call_deferred(grabberInstance)
+	await grabberInstance.ended
 
 func _onBetButtonClick(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:

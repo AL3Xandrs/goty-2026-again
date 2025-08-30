@@ -17,14 +17,16 @@ extends StaticBody2D
 @onready var noiseMakerTop= $KnockingSoundTop
 
 @onready var mainNode = get_tree().get_root().get_node("main")
-@onready var gameNode = get_tree().get_root().get_node("main/game")
-@onready var computerNode = get_tree().get_root().get_node("main/game/Computer")
+@onready var gameNode = $".."
+@onready var computerNode = $"../Computer"
+@onready var skillCheck = load("res://scenes/skill_check.tscn")
 
 var currentWindow
 var currentWindowOpen
 var currentWindowBroken
 var currentNoiseMaker
-var botherScore: int 
+# var botherScore: int 
+var pushed = 1
 
 func _ready() -> void:
 	interactable.interact = _on_interact
@@ -42,17 +44,21 @@ func _ready() -> void:
 	
 	
 func _on_interact():
-	botherScore -= 1
-	if botherScore == 0:
-		closeWindow()
-	print("s-a inchis")
+	if !pushed and gameNode.failCount <3:
+		var skill = skillCheck.instantiate()
+		add_child(skill)
+		await get_tree().create_timer(0.1, false).timeout
+		if pushed:
+			closeWindow()
+			print("s-a inchis")
+		else: gameNode.failCount+=1
 
 func botherPlayer(bother: int):
-	botherScore = bother
 	openWindow()
+	pushed = 0
 	currentNoiseMaker.play()
 	await get_tree().create_timer(5.0, false).timeout
-	if botherScore > 0:
+	if !pushed:
 		breakWindow()
 		landlordWindowBreak()
 

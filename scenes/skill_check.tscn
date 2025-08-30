@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhrau3165nrbj"]
+
+[ext_resource type="Script" uid="uid://nchkf1rumh27" path="res://scripts/SkillCheck.gd" id="1_6s18a"]
+[ext_resource type="Texture2D" uid="uid://cbp48gn0mti41" path="res://assets/long bar.png" id="2_21c0m"]
+[ext_resource type="Texture2D" uid="uid://ommxcdavr0gg" path="res://assets/good bar.png" id="3_j1mrm"]
+[ext_resource type="Texture2D" uid="uid://drakbnn4pkw6b" path="res://assets/click bar.png" id="4_d8n7i"]
+
+[node name="SkillCheck" type="Node2D"]
+scale = Vector2(3.20972, 3.20972)
+script = ExtResource("1_6s18a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(1.06667, 1)
+texture = ExtResource("2_21c0m")
+
+[node name="Start" type="Node2D" parent="Background"]
+position = Vector2(-60, 0)
+
+[node name="End" type="Node2D" parent="Background"]
+position = Vector2(60, 0)
+
+[node name="HitZone" type="Sprite2D" parent="Background"]
+position = Vector2(1.78814e-06, -1.61559e-27)
+scale = Vector2(0.75, 1)
+texture = ExtResource("3_j1mrm")
+
+[node name="GoodStart" type="Node2D" parent="Background/HitZone"]
+position = Vector2(-10, 8)
+
+[node name="GoodEnd" type="Node2D" parent="Background/HitZone"]
+position = Vector2(10, 8)
+
+[node name="Mover" type="Sprite2D" parent="Background"]
+position = Vector2(-58.4163, 0)
+texture = ExtResource("4_d8n7i")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -42.3713
+offset_top = -19.9394
+offset_right = 138.629
+offset_bottom = -1.93945
+scale = Vector2(0.469145, 0.463201)
+text = "Press E to stop the line"
+horizontal_alignment = 1

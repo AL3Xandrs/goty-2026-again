@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://d123ab8jlfnps"]
+
+[ext_resource type="Script" uid="uid://catt6q0ect08s" path="res://scripts/end_screen.gd" id="1_6e1uj"]
+[ext_resource type="Texture2D" uid="uid://c6ot3kh7widfo" path="res://assets/icon.svg" id="2_jc7ji"]
+[ext_resource type="Script" uid="uid://6bmf80xha8cj" path="res://scripts/roulette_ball.gd" id="3_jc7ji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87vmq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g44xs"]
+radius = 32.0
+
+[node name="EndScreen" type="Node2D"]
+script = ExtResource("1_6e1uj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Wheel" type="Node2D" parent="."]
+
+[node name="WheelSprite" type="Sprite2D" parent="Wheel"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_jc7ji")
+
+[node name="Area2D" type="Area2D" parent="Wheel/WheelSprite"]
+position = Vector2(0, -50.6667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel/WheelSprite/Area2D"]
+shape = SubResource("RectangleShape2D_87vmq")
+
+[node name="RouletteBall" type="CharacterBody2D" parent="Wheel"]
+position = Vector2(304, -24)
+script = ExtResource("3_jc7ji")
+
+[node name="BallSprite" type="Sprite2D" parent="Wheel/RouletteBall"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_jc7ji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel/RouletteBall"]
+shape = SubResource("CircleShape2D_g44xs")

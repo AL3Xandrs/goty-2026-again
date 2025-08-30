@@ -13,7 +13,7 @@ const LEVEL_3_THRESHOLD: int = 2000
 const FINISH_THRESHOLD: int = 10000
 
 var money: int = 0 : set = setMoney
-var level: int = 2
+var level: int = 3
 
 var time:float = 0
 var botherInterval :float = 10

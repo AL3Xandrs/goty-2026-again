@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var symbols = [$dummy, $symbol1, $symbol2, $symbol3]
+@onready var reel_stopped: AudioStreamPlayer2D = $"../Audio/reel_stopped"
 var index :int
 
 var name_to_sprite = {
@@ -34,8 +35,9 @@ func spin(final_symbols:Array):
 		await spin_mini(randi_range(0,7))
 	for i in range(2,-1,-1):
 		await spin_mini(name_to_sprite[final_symbols[i]])
-		
+	
 	await spin_mini(randi_range(0,5))
+	reel_stopped.play()
 	var rubber_band = create_tween()
 	var initial_position = position # this variable stores the position of the bottom symbol before the rubber band effect starts. This helps avoid a very unvofortunate bug that cumulates the bounce back
 	rubber_band.tween_property(self,"position",initial_position + Vector2(0,20), 0.25)

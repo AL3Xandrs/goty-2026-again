@@ -16,6 +16,8 @@ extends Node2D
 @onready var victoryScreen := $"./EndingScreens/Victory"
 @onready var defeatScreen := $"./EndingScreens/Lose"
 @onready var drawScreen := $"./EndingScreens/Draw"
+@onready var win_sound: AudioStreamPlayer2D = $Audio/win
+@onready var lose_sound: AudioStreamPlayer2D = $Audio/lose
 
 @onready var infoYap := $"./InfoButton/InfoYap"
 @onready var dice_throw_sound: AudioStreamPlayer2D = $Audio/dice_throw
@@ -121,9 +123,9 @@ func makeEndScreen(screenType: String):
 	endScreens.position = position + Vector2(0, -200)
 	endScreens.modulate.a = 0
 	
-	if screenType == "victory": victoryScreen.show()
-	elif screenType == "defeat": defeatScreen.show()
-	elif screenType == "draw": drawScreen.show()
+	if screenType == "victory": victoryScreen.show(); win_sound.play()
+	elif screenType == "defeat": defeatScreen.show(); lose_sound.play()
+	elif screenType == "draw": drawScreen.show(); lose_sound.play()
 	
 	var mover = create_tween()
 	var fader = create_tween()

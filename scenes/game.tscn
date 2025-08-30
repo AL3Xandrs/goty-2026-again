@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cpfqxxrf8ksro"]
+[gd_scene load_steps=19 format=3 uid="uid://cpfqxxrf8ksro"]
 
 [ext_resource type="Script" uid="uid://dbu0anegsqv7a" path="res://scenes/game.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://c3hj4cg8v4oo" path="res://assets/main room/rug.png" id="2_p57ef"]
@@ -9,8 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://ync7sqlq1n1f" path="res://interaction/window.tscn" id="5_vef74"]
 [ext_resource type="Script" uid="uid://bx7asx7jsiykw" path="res://scenes/computer.gd" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://cv8r3j7jx2j14" path="res://interaction/interactable.tscn" id="7_u5sy4"]
-[ext_resource type="Script" uid="uid://c6cuqsqfos4k5" path="res://scenes/door.gd" id="10_vtaks"]
+[ext_resource type="Script" path="res://scenes/door.gd" id="10_vtaks"]
 [ext_resource type="AudioStream" uid="uid://c5sgrw2najstu" path="res://assets/sounds/Door1.wav" id="11_kvpfn"]
+[ext_resource type="AudioStream" uid="uid://ofmj8cxs53nr" path="res://assets/sounds/door_slam.wav" id="11_kvuet"]
+[ext_resource type="AudioStream" uid="uid://y433dnin8l73" path="res://assets/sounds/door_lock.wav" id="12_dinhu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
 font = ExtResource("3_0tnpc")
@@ -113,5 +115,11 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_kvpfn")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="DoorSound" type="AudioStreamPlayer2D" parent="Door"]
+[node name="door_slam" type="AudioStreamPlayer2D" parent="Door"]
+stream = ExtResource("11_kvuet")
+
+[node name="door_lock" type="AudioStreamPlayer2D" parent="Door"]
+stream = ExtResource("12_dinhu")
+
+[node name="door_knock" type="AudioStreamPlayer2D" parent="Door"]
 stream = ExtResource("11_kvpfn")

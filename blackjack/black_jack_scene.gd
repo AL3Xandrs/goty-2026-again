@@ -20,6 +20,8 @@ var currentTurn: int = 3
 @onready var betButton := $"./Bet/BetButton"
 @onready var gameNode = get_tree().get_root().get_node("./main/game")
 @onready var infoYap = $"./InfoButton/InfoYap"
+@onready var win_sound: AudioStreamPlayer2D = $Audio/win
+@onready var lose_sound: AudioStreamPlayer2D = $Audio/lose
 
 var betAmount:int = 0
 
@@ -125,9 +127,9 @@ func makeEndScreen(screenType: String):
 	endScreens.position = position + Vector2(0, -100)
 	endScreens.modulate.a = 0
 	
-	if screenType == "victory": victoryScreen.show()
-	elif screenType == "defeat": defeatScreen.show()
-	elif screenType == "draw": drawScreen.show()
+	if screenType == "victory": victoryScreen.show(); win_sound.play()
+	elif screenType == "defeat": defeatScreen.show(); lose_sound.play()
+	elif screenType == "draw": drawScreen.show(); lose_sound.play()
 	
 	var mover = create_tween()
 	var fader = create_tween()

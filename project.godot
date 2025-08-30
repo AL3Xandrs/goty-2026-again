@@ -19,10 +19,6 @@ config/icon="res://assets/icon.svg"
 
 theme/custom_font="uid://crnyr53f41dyj"
 
-[gui]
-
-theme/custom_font="uid://crnyr53f41dyj"
-
 [input]
 
 ui_left={

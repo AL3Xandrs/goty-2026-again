@@ -30,6 +30,7 @@ var currentNoiseMaker
 var pushed = 1
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	interactable.interact = _on_interact
 	if typeOfWindow == "Bottom Window":
 		currentWindow = bottomWindowSprite

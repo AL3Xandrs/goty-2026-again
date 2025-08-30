@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://d123ab8jlfnps"]
+[gd_scene load_steps=11 format=3 uid="uid://d123ab8jlfnps"]
 
 [ext_resource type="Script" uid="uid://catt6q0ect08s" path="res://scripts/end_screen.gd" id="1_6e1uj"]
 [ext_resource type="Texture2D" uid="uid://c6ot3kh7widfo" path="res://assets/icon.svg" id="2_jc7ji"]
 [ext_resource type="Script" uid="uid://6bmf80xha8cj" path="res://scripts/roulette_ball.gd" id="3_jc7ji"]
+[ext_resource type="Texture2D" uid="uid://c2eona8fnc6tm" path="res://assets/ending screens/blackjack win ending.png" id="4_87vmq"]
+[ext_resource type="Texture2D" uid="uid://bgl43wggfe5ob" path="res://assets/ending screens/pay rent ending.png" id="5_vj8vg"]
+[ext_resource type="Texture2D" uid="uid://cnkw1f5lolvxo" path="res://assets/ending screens/slot win ending.png" id="6_plosh"]
+[ext_resource type="Texture2D" uid="uid://bwdaw7bxh1b3" path="res://assets/ending screens/landlord_ending.png" id="7_plosh"]
+[ext_resource type="Texture2D" uid="uid://cyko37hntntw0" path="res://assets/ending screens/no_money_ending.png" id="8_4j4el"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87vmq"]
 
@@ -15,6 +20,7 @@ script = ExtResource("1_6e1uj")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Wheel" type="Node2D" parent="."]
+visible = false
 
 [node name="WheelSprite" type="Sprite2D" parent="Wheel"]
 scale = Vector2(3, 3)
@@ -25,6 +31,7 @@ position = Vector2(0, -50.6667)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel/WheelSprite/Area2D"]
 shape = SubResource("RectangleShape2D_87vmq")
+disabled = true
 
 [node name="RouletteBall" type="CharacterBody2D" parent="Wheel"]
 position = Vector2(304, -24)
@@ -36,3 +43,41 @@ texture = ExtResource("2_jc7ji")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel/RouletteBall"]
 shape = SubResource("CircleShape2D_g44xs")
+
+[node name="Buttons" type="Node2D" parent="Wheel"]
+
+[node name="BlackButton" type="Button" parent="Wheel/Buttons"]
+offset_left = -128.0
+offset_top = 64.0
+offset_right = -48.0
+offset_bottom = 144.0
+
+[node name="RedButton" type="Button" parent="Wheel/Buttons"]
+offset_left = 40.0
+offset_top = 64.0
+offset_right = 120.0
+offset_bottom = 144.0
+
+[node name="BlackjackWinEnding" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_87vmq")
+
+[node name="SlotWinEnding" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_plosh")
+
+[node name="PayRentEnding" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_vj8vg")
+
+[node name="LandlordEnding" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_plosh")
+
+[node name="NoMoneyEnding" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("8_4j4el")
+
+[connection signal="body_entered" from="Wheel/WheelSprite/Area2D" to="." method="_onBodyEnterGreen"]
+[connection signal="gui_input" from="Wheel/Buttons/BlackButton" to="." method="_onPressButton"]
+[connection signal="gui_input" from="Wheel/Buttons/RedButton" to="." method="_onPressButton"]

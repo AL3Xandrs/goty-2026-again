@@ -7,6 +7,9 @@ var time: float
 var frameInterval: float = 0.2
 @onready var playerSpriteSheet: Sprite2D = $"Icon"
 
+func _ready() -> void:
+	playerSpriteSheet.frame = 1
+
 func _physics_process(delta: float) -> void:
 	if !isBusy:
 		time += delta

@@ -60,7 +60,6 @@ func _process(delta: float) -> void:
 
 func _on_play_button_pressed() -> void:
 	play()
-	play_sound.play()
 
 func _on_bet_1_pressed() -> void:
 	current_bet = 10
@@ -89,6 +88,8 @@ func _on_bet_6_pressed() -> void:
 func _on_bet_7_pressed() -> void:
 	current_bet = 200
 	current_bet_label.text = "Current Bet:\n" + str(current_bet)
+
+
 
 func pick_symbol(weights:Dictionary):
 	var total_weight = 0
@@ -132,6 +133,7 @@ func calc_tablou():
 func play():
 	if !is_spinning and current_bet <= gameNode.money:
 		is_spinning = true
+		play_sound.play()
 		spinning_sound.play()
 		final_symbols = calc_tablou()
 		var currentScore = score()

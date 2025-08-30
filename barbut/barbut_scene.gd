@@ -18,6 +18,7 @@ extends Node2D
 @onready var drawScreen := $"./EndingScreens/Draw"
 
 @onready var infoYap := $"./InfoButton/InfoYap"
+@onready var dice_throw_sound: AudioStreamPlayer2D = $Audio/dice_throw
 
 var bet: int
 

@@ -8,6 +8,7 @@ var dealerHand: Array
 var dealerHiddenCard: Card
 @onready var cardScene = load("res://blackjack/card_scene.tscn")
 @onready var cardStack := $"../CardStackNode"
+@onready var card_draw_sound: AudioStreamPlayer2D = $"../Audio/card_draw"
 
 
 func _ready() -> void:
@@ -54,6 +55,7 @@ func getScore() -> int:
 
 func drawCard(card: Array):
 	var cardInstance = cardScene.instantiate()
+	card_draw_sound.play()
 	cardInstance.position += Vector2(dealerHand.size() * 40, 0)
 	if dealerHand.size() == 2: #if he the 1 card and draw and 
 		cardInstance.isHidden = 1

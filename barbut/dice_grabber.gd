@@ -8,6 +8,7 @@ var offset:= Vector2(0, 0)
 @onready var dice2 := $"Dice2"
 @onready var dragBox :=$"CollisionShape2D"
 @onready var infoLabel := $"InfoLabel"
+@onready var dice_throw_sound_1: AudioStreamPlayer2D = $'../Audio/dice_throw'
 var dice1Value: int
 var dice2Value: int
 
@@ -45,6 +46,7 @@ func _onGrab(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			if dragging:
 				dragging = false
 				dragBox.disabled = true
+				dice_throw_sound_1.play()
 
 func updateForce():
 	while(dragging):

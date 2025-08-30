@@ -8,6 +8,7 @@ const WEIGHT: int = 2
 var playerHand: Array
 @onready var cardScene = load("res://blackjack/card_scene.tscn")
 @onready var cardStack := $"../CardStackNode"
+@onready var card_draw_sound: AudioStreamPlayer2D = $"../Audio/card_draw"
 
 
 func _ready() -> void:
@@ -75,6 +76,7 @@ func _generateRandomCard() -> Array:
 
 func drawCard(card: Array):
 	var cardInstance = cardScene.instantiate()
+	card_draw_sound.play()
 	var startPosition = cardStack.position - position
 	var finalPosition = Vector2(playerHand.size() * 40, 0)
 	cardInstance.startPosition = startPosition

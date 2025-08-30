@@ -16,7 +16,7 @@ const LEVEL_3_THRESHOLD: int = 2000
 const FINISH_THRESHOLD: int = 10000
 
 var money: int = 0 : set = setMoney
-var level: int = 3
+var level: int = 2
 
 const startingMoney = 9999
 
@@ -29,6 +29,7 @@ var failCount:= 0
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
+
 	if !gameStarted:
 		await get_tree().create_timer(1.0, false).timeout
 		doorSound.play()

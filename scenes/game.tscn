@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ync7sqlq1n1f" path="res://interaction/window.tscn" id="5_vef74"]
 [ext_resource type="Script" uid="uid://bx7asx7jsiykw" path="res://scenes/computer.gd" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://cv8r3j7jx2j14" path="res://interaction/interactable.tscn" id="7_u5sy4"]
-[ext_resource type="Script" path="res://scenes/door.gd" id="10_vtaks"]
+[ext_resource type="Script" uid="uid://c6cuqsqfos4k5" path="res://scenes/door.gd" id="10_vtaks"]
 [ext_resource type="AudioStream" uid="uid://c5sgrw2najstu" path="res://assets/sounds/Door1.wav" id="11_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://ofmj8cxs53nr" path="res://assets/sounds/door_slam.wav" id="11_kvuet"]
 [ext_resource type="AudioStream" uid="uid://y433dnin8l73" path="res://assets/sounds/door_lock.wav" id="12_dinhu"]

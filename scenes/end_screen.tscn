@@ -1,18 +1,27 @@
-[gd_scene load_steps=11 format=3 uid="uid://d123ab8jlfnps"]
+[gd_scene load_steps=17 format=3 uid="uid://d123ab8jlfnps"]
 
 [ext_resource type="Script" uid="uid://catt6q0ect08s" path="res://scripts/end_screen.gd" id="1_6e1uj"]
-[ext_resource type="Texture2D" uid="uid://c6ot3kh7widfo" path="res://assets/icon.svg" id="2_jc7ji"]
+[ext_resource type="Texture2D" uid="uid://bppyvsmrpxxrr" path="res://assets/wheel assets/roata_norocului.png" id="2_fix67"]
 [ext_resource type="Script" uid="uid://6bmf80xha8cj" path="res://scripts/roulette_ball.gd" id="3_jc7ji"]
 [ext_resource type="Texture2D" uid="uid://c2eona8fnc6tm" path="res://assets/ending screens/blackjack win ending.png" id="4_87vmq"]
+[ext_resource type="Texture2D" uid="uid://d0kb85gtm3i8d" path="res://assets/wheel assets/ball.png" id="4_qyl73"]
+[ext_resource type="Texture2D" uid="uid://b6gb44dviqc1e" path="res://assets/wheel assets/bet_black.png" id="5_7ycdd"]
 [ext_resource type="Texture2D" uid="uid://bgl43wggfe5ob" path="res://assets/ending screens/pay rent ending.png" id="5_vj8vg"]
+[ext_resource type="Texture2D" uid="uid://dsxx88t71bcbp" path="res://assets/wheel assets/bet_red.png" id="6_d62ht"]
 [ext_resource type="Texture2D" uid="uid://cnkw1f5lolvxo" path="res://assets/ending screens/slot win ending.png" id="6_plosh"]
 [ext_resource type="Texture2D" uid="uid://bwdaw7bxh1b3" path="res://assets/ending screens/landlord_ending.png" id="7_plosh"]
 [ext_resource type="Texture2D" uid="uid://cyko37hntntw0" path="res://assets/ending screens/no_money_ending.png" id="8_4j4el"]
+[ext_resource type="LabelSettings" uid="uid://bp6m2fxnw3l57" path="res://assets/ending screens/ending screen fond setting thingo.tres" id="8_7ycdd"]
+[ext_resource type="Texture2D" uid="uid://d17s1lrtse3se" path="res://assets/ending screens/THE_HOUSE_ALWAYS_WINS.png" id="12_qyl73"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87vmq"]
+size = Vector2(31.9178, 53.8356)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g44xs"]
 radius = 32.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ilt1u"]
+font_size = 31
 
 [node name="EndScreen" type="Node2D"]
 script = ExtResource("1_6e1uj")
@@ -23,23 +32,25 @@ script = ExtResource("1_6e1uj")
 visible = false
 
 [node name="WheelSprite" type="Sprite2D" parent="Wheel"]
-scale = Vector2(3, 3)
-texture = ExtResource("2_jc7ji")
+scale = Vector2(1.46, 1.46)
+texture = ExtResource("2_fix67")
 
 [node name="Area2D" type="Area2D" parent="Wheel/WheelSprite"]
-position = Vector2(0, -50.6667)
+position = Vector2(-5.47945, -164.384)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel/WheelSprite/Area2D"]
+position = Vector2(-2.98023e-08, -1.90735e-06)
 shape = SubResource("RectangleShape2D_87vmq")
 disabled = true
 
 [node name="RouletteBall" type="CharacterBody2D" parent="Wheel"]
-position = Vector2(304, -24)
+position = Vector2(408, -24)
 script = ExtResource("3_jc7ji")
 
 [node name="BallSprite" type="Sprite2D" parent="Wheel/RouletteBall"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_jc7ji")
+position = Vector2(7.62939e-06, 0)
+scale = Vector2(3.375, 3.375)
+texture = ExtResource("4_qyl73")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wheel/RouletteBall"]
 shape = SubResource("CircleShape2D_g44xs")
@@ -47,36 +58,119 @@ shape = SubResource("CircleShape2D_g44xs")
 [node name="Buttons" type="Node2D" parent="Wheel"]
 
 [node name="BlackButton" type="Button" parent="Wheel/Buttons"]
-offset_left = -128.0
-offset_top = 64.0
-offset_right = -48.0
-offset_bottom = 144.0
+offset_left = -440.0
+offset_top = -80.0
+offset_right = -360.0
+icon = ExtResource("5_7ycdd")
+flat = true
+expand_icon = true
 
 [node name="RedButton" type="Button" parent="Wheel/Buttons"]
-offset_left = 40.0
-offset_top = 64.0
-offset_right = 120.0
-offset_bottom = 144.0
+offset_left = -440.0
+offset_top = 48.0
+offset_right = -360.0
+offset_bottom = 128.0
+icon = ExtResource("6_d62ht")
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="Wheel/Buttons"]
+offset_left = -520.0
+offset_top = -176.0
+offset_right = -276.0
+offset_bottom = -101.0
+text = "What color will the
+ball land on?"
+label_settings = SubResource("LabelSettings_ilt1u")
 
 [node name="BlackjackWinEnding" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("4_87vmq")
 
+[node name="Label" type="Label" parent="BlackjackWinEnding"]
+offset_left = -536.0
+offset_top = -296.0
+offset_right = 157.0
+offset_bottom = 91.0
+text = "Ending 4/6
+You made a fair bit of money by gambling
+and realised stopping early is best."
+label_settings = ExtResource("8_7ycdd")
+
 [node name="SlotWinEnding" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("6_plosh")
+
+[node name="Label" type="Label" parent="SlotWinEnding"]
+offset_left = -536.0
+offset_top = -312.0
+offset_right = 546.0
+offset_bottom = -31.0
+text = "Ending 5/6:
+Through sheer luck you've managed
+to acquire enough money not only for rent,
+but to also start a small business."
+label_settings = ExtResource("8_7ycdd")
 
 [node name="PayRentEnding" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("5_vj8vg")
 
+[node name="Label" type="Label" parent="PayRentEnding"]
+offset_left = -560.0
+offset_top = 40.0
+offset_right = 243.0
+offset_bottom = 321.0
+text = "Ending 3/6:
+You paid rent and
+quit gambling while
+you were ahead."
+label_settings = ExtResource("8_7ycdd")
+
 [node name="LandlordEnding" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("7_plosh")
 
+[node name="Label" type="Label" parent="LandlordEnding"]
+offset_left = -552.0
+offset_top = 24.0
+offset_right = 162.0
+offset_bottom = 328.0
+text = "Ending 2/6:
+The landlord got in and
+kicked you out of the house.
+You are now homeless!"
+label_settings = ExtResource("8_7ycdd")
+
 [node name="NoMoneyEnding" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("8_4j4el")
+
+[node name="Label" type="Label" parent="NoMoneyEnding"]
+offset_left = -552.0
+offset_top = -320.0
+offset_right = 335.0
+offset_bottom = -39.0
+text = "Ending 1/6:
+You lost your few remaining money
+while gambling.
+I mean.. what did you expect?"
+label_settings = ExtResource("8_7ycdd")
+
+[node name="TheHouseAlwaysWins" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("12_qyl73")
+
+[node name="Label" type="Label" parent="TheHouseAlwaysWins"]
+offset_left = -552.0
+offset_top = -312.0
+offset_right = 260.0
+offset_bottom = -31.0
+text = "Ending 6/6:
+Blinded by the sunk cost fallacy
+you failed to remember..
+The house ALWAYS wins."
+label_settings = ExtResource("8_7ycdd")
 
 [connection signal="body_entered" from="Wheel/WheelSprite/Area2D" to="." method="_onBodyEnterGreen"]
 [connection signal="gui_input" from="Wheel/Buttons/BlackButton" to="." method="_onPressButton"]

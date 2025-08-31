@@ -22,6 +22,7 @@ offset_left = -384.0
 offset_top = 64.0
 offset_right = -312.0
 offset_bottom = 136.0
+pivot_offset = Vector2(36, 36)
 icon = ExtResource("3_5p0j4")
 flat = true
 

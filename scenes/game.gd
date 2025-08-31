@@ -18,9 +18,9 @@ const LEVEL_3_THRESHOLD: int = 2000
 const FINISH_THRESHOLD: int = 10000
 
 var money: int = 0 : set = setMoney
-var level: int = 1
+var level: int = 3
 
-const startingMoney = 100
+const startingMoney = 9999
 
 var gameStarted:bool = 0
 

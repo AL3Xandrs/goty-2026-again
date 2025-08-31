@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ovafjvpu8wr3" path="res://barbut/dice_scene.tscn" id="2_48mh8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_so8rm"]
-size = Vector2(136, 53)
+size = Vector2(212, 144)
 
 [node name="DiceGrabber" type="Area2D"]
 script = ExtResource("1_0rcje")

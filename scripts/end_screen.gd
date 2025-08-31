@@ -10,6 +10,8 @@ extends Node2D
 @onready var slotEnding:= $SlotWinEnding
 @onready var falitEnding:=$NoMoneyEnding
 @onready var jumpscareEnding:=$LandlordEnding
+@onready var finaleEnding:= $TheHouseAlwaysWins
+
 @onready var buttons = $"Wheel/Buttons"
 
 var chosenScreen
@@ -25,7 +27,7 @@ var type: String = "Finale"
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	match type:
-		"Finale": chosenScreen="";roulette.modulate.a = 0; roulette.show() ; await runFinale()
+		"Finale": chosenScreen=finaleEnding;roulette.modulate.a = 0; roulette.show() ; await runFinale()
 		"Pussy 1": chosenScreen = barbutEnding
 		"Pussy 2": chosenScreen = blackjackEnding
 		"Pussy 4": chosenScreen = slotEnding   # ba care va uitati pe-aci sa nu ma contactati ca nu repar nmk
@@ -63,7 +65,7 @@ func runFinale():
 
 
 func _onBodyEnterGreen(body: Node2D) -> void: 
-	if chosenScreen=="":
+	if chosenScreen==finaleEnding:
 		body.velocity = Vector2(0, 0)
 		body.gravity = Vector2(0, 0)
 		while(spinning):

@@ -49,7 +49,7 @@ shape = SubResource("RectangleShape2D_246na")
 
 [node name="interactable" parent="." instance=ExtResource("2_xjadj")]
 visible = false
-interact_name = "Close window (Spam E)"
+interact_name = "Close window (Skill Check)"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactable"]
 position = Vector2(0, 40)

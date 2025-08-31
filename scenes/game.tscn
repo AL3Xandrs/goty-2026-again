@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cpfqxxrf8ksro"]
+[gd_scene load_steps=21 format=3 uid="uid://cpfqxxrf8ksro"]
 
 [ext_resource type="Script" uid="uid://dbu0anegsqv7a" path="res://scenes/game.gd" id="1_p57ef"]
 [ext_resource type="Texture2D" uid="uid://c3hj4cg8v4oo" path="res://assets/main room/rug.png" id="2_p57ef"]
@@ -13,6 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://c5sgrw2najstu" path="res://assets/sounds/Door1.wav" id="11_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://ofmj8cxs53nr" path="res://assets/sounds/door_slam.wav" id="11_kvuet"]
 [ext_resource type="AudioStream" uid="uid://y433dnin8l73" path="res://assets/sounds/door_lock.wav" id="12_dinhu"]
+[ext_resource type="AudioStream" uid="uid://b72aorg5mh5x3" path="res://assets/sounds/computer_music.mp3" id="14_trtic"]
+[ext_resource type="AudioStream" uid="uid://cx5om85aamn2c" path="res://assets/sounds/room_music.mp3" id="15_ir15t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u5sy4"]
 font = ExtResource("3_0tnpc")
@@ -123,3 +125,13 @@ stream = ExtResource("12_dinhu")
 
 [node name="door_knock" type="AudioStreamPlayer2D" parent="Door"]
 stream = ExtResource("11_kvpfn")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="computer_music" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("14_trtic")
+volume_db = -20.0
+
+[node name="room_music" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("15_ir15t")
+volume_db = -20.0

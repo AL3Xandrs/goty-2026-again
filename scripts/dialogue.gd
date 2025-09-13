@@ -13,6 +13,8 @@ var text: String = "This is the default text"
 var speaker: String = "tf?"
 var isInteractive: bool = 0
 
+signal done
+
 func _ready() -> void:
 	if !isInteractive:
 		uninteractiveLabel.show()
@@ -49,6 +51,7 @@ func clearDialogue():
 	fader.tween_property(self, "modulate:a", 0, 0.2)
 	await fader.finished
 	get_tree().paused = false
+	emit_signal("done")
 	queue_free()
 
 func showButtons():

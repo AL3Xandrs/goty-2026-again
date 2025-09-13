@@ -142,7 +142,7 @@ func play():
 		gameNode.money -= current_bet
 		for r in range(5):
 			reels[r].spin(final_symbols[r])
-		await get_tree().create_timer(4,false).timeout
+		await reels[4].doneSpinning
 		is_spinning = false
 		spinning_sound.stop()
 		if currentScore > 0:

@@ -38,9 +38,14 @@ func doMoveThingo():
 	var mover = create_tween()
 	mover.tween_property(movingLine,"position", barEnd.position, 1).set_ease(Tween.EASE_IN_OUT)
 	mover.tween_property(movingLine,"position", barStart.position, 1).set_ease(Tween.EASE_IN_OUT)
+	didAnOopsie(mover)
 	await stop
 	mover.kill()
 	finish()
+
+func didAnOopsie(mover: Tween):
+	await mover.finished
+	emit_signal("stop")
 
 func finish():
 	get_tree().paused = false

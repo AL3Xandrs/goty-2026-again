@@ -18,8 +18,8 @@ const LEVEL_3_THRESHOLD: int = 2000
 const FINISH_THRESHOLD: int = 10000
 
 var money: int = 0 : set = setMoney
-var level: int = 1
 
+var level: int = 1
 const startingMoney = 100
 
 var gameStarted:bool = 0
@@ -133,7 +133,8 @@ func makeDialogue(text: String, speaker: String, isInteractive: bool = 0):
 	dialogueInstance.speaker = speaker
 	dialogueInstance.isInteractive = isInteractive
 	add_child(dialogueInstance)
-	await get_tree().create_timer(0.01, false).timeout
+	await dialogueInstance.done # it's that easy
+	#await get_tree().create_timer(0.01, false).timeout
 
 
 func runFinale():
